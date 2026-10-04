@@ -1,33 +1,22 @@
 import { useRef } from 'react'
+import { MediaFrame, type MediaFrameProps } from '@/components/MediaFrame'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
 import { gsap, useGSAP } from '@/lib/gsap'
-import { DURATION, EASE } from '@/lib/motion'
-import { cn } from '@/lib/utils'
+import { DURATION, EASE, SCROLL_START } from '@/lib/motion'
 
-type ImageRevealProps = {
-  src: string
-  /** Alt vide (`""`) pour une image purement décorative. */
-  alt: string
-  width?: number
-  height?: number
-  /** Classes du cadre : y définir le ratio (ex. `aspect-4/5`). */
-  className?: string
-  /** `eager` pour une image au-dessus de la ligne de flottaison. */
-  loading?: 'lazy' | 'eager'
+type ImageRevealProps = Omit<MediaFrameProps, 'ref' | 'imageRef'> & {
+  /**
+   * `clip` : dévoilement par clip-path + léger dézoom.
+   * `fade` : fondu simple. `none` : image statique.
+   */
+  reveal?: 'clip' | 'fade' | 'none'
 }
 
 /**
- * Image révélée par clip-path à l'entrée dans le viewport, avec léger dézoom.
- * Reduced motion : simple fade.
+ * Image révélée à l'entrée dans le viewport.
+ * Reduced motion : `clip` est remplacé par un fondu court.
  */
-export function ImageReveal({
-  src,
-  alt,
-  width,
-  height,
-  className,
-  loading = 'lazy',
-}: ImageRevealProps) {
+export function ImageReveal({ reveal = 'clip', ...props }: ImageRevealProps) {
   const frameRef = useRef<HTMLDivElement>(null)
   const imageRef = useRef<HTMLImageElement>(null)
   const reducedMotion = useReducedMotion()
@@ -35,35 +24,27 @@ export function ImageReveal({
   useGSAP(
     () => {
       const frame = frameRef.current
-      if (!frame) return
+      if (!frame || reveal === 'none') return
 
-      const scrollTrigger = { trigger: frame, start: 'top 85%', once: true }
+      const scrollTrigger = { trigger: frame, start: SCROLL_START, once: true }
 
-      if (reducedMotion) {
-        gsap.from(frame, { autoAlpha: 0, duration: DURATION.micro, scrollTrigger })
+      if (reveal === 'fade' || reducedMotion) {
+        gsap.from(frame, {
+          autoAlpha: 0,
+          duration: reducedMotion ? DURATION.fast : DURATION.slow,
+          ease: EASE.outSoft,
+          scrollTrigger,
+        })
         return
       }
 
       gsap
-        .timeline({ defaults: { duration: DURATION.image, ease: EASE.outStrong }, scrollTrigger })
+        .timeline({ defaults: { duration: DURATION.slower, ease: EASE.outStrong }, scrollTrigger })
         .fromTo(frame, { clipPath: 'inset(100% 0% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)' })
         .from(imageRef.current, { scale: 1.2 }, 0)
     },
-    { dependencies: [reducedMotion], revertOnUpdate: true },
+    { dependencies: [reducedMotion, reveal], revertOnUpdate: true },
   )
 
-  return (
-    <div ref={frameRef} className={cn('overflow-hidden', className)}>
-      <img
-        ref={imageRef}
-        src={src}
-        alt={alt}
-        width={width}
-        height={height}
-        loading={loading}
-        decoding="async"
-        className="size-full object-cover"
-      />
-    </div>
-  )
+  return <MediaFrame ref={frameRef} imageRef={imageRef} {...props} />
 }

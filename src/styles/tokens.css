@@ -24,6 +24,13 @@
   --text-display-xl: clamp(3rem, 1rem + 9.5vw, 10rem);
   --text-display-xl--line-height: 0.92;
   --text-display-xl--letter-spacing: 0;
+  /*
+   * Display Hero — titre monumental de la homepage.
+   * La taille (--hero-title-size) est bornée par la largeur ET la hauteur de l'écran.
+   */
+  --text-display-hero: var(--hero-title-size);
+  --text-display-hero--line-height: 0.9;
+  --text-display-hero--letter-spacing: -0.005em;
   /* Display L — titres de sections : 40px → 110px */
   --text-display-l: clamp(2.5rem, 1rem + 6.5vw, 6.875rem);
   --text-display-l--line-height: 0.95;
@@ -32,13 +39,23 @@
   --text-display-m: clamp(2rem, 1.25rem + 3vw, 4rem);
   --text-display-m--line-height: 1;
   --text-display-m--letter-spacing: 0.005em;
+  /* Heading — titres de cartes, intertitres : 24px → 40px */
+  --text-heading: clamp(1.5rem, 1.2rem + 1.3vw, 2.5rem);
+  --text-heading--line-height: 1.05;
+  --text-heading--letter-spacing: 0.01em;
   /* Body : 16px → 20px */
   --text-body: clamp(1rem, 0.94rem + 0.28vw, 1.25rem);
   --text-body--line-height: 1.55;
-  /* Small : 12px → 14px, uppercase + letter-spacing positif */
+  /* Small — légendes, metadata, labels : 12px → 14px */
   --text-small: clamp(0.75rem, 0.72rem + 0.14vw, 0.875rem);
-  --text-small--line-height: 1.4;
-  --text-small--letter-spacing: 0.18em;
+  --text-small--line-height: 1.5;
+  /* Micro — numéros, mentions : 11px → 12px, toujours uppercase */
+  --text-micro: clamp(0.6875rem, 0.67rem + 0.08vw, 0.75rem);
+  --text-micro--line-height: 1.4;
+
+  /* Letter-spacing des textes uppercase */
+  --tracking-label: 0.16em;
+  --tracking-micro: 0.2em;
 
   /* --- Radius : « peu de radius » --- */
   --radius-xs: 0;
@@ -49,6 +66,28 @@
 
   /* --- Breakpoints : défauts Tailwind + très grand écran --- */
   --breakpoint-3xl: 120rem;
+
+  /* Indicateur de scroll du hero : un trait qui se dessine puis s'efface. */
+  --animate-scroll-line: scroll-line 2.4s var(--ease-out-quart) infinite;
+
+  @keyframes scroll-line {
+    0% {
+      scale: 1 0;
+      transform-origin: top;
+    }
+    45% {
+      scale: 1 1;
+      transform-origin: top;
+    }
+    55% {
+      scale: 1 1;
+      transform-origin: bottom;
+    }
+    100% {
+      scale: 1 0;
+      transform-origin: bottom;
+    }
+  }
 
   /* --- Easing CSS (équivalents des eases GSAP de src/lib/motion.ts) --- */
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
@@ -87,7 +126,18 @@
 :root {
   /* Marge latérale du container : 20px mobile → 64px grand écran. */
   --gutter: 1.25rem;
+  /* Hauteur du header : 72px mobile, 96px desktop. */
+  --header-height: 4.5rem;
+  /* Titre du hero, mobile : 3 lignes, « BOXING » presque pleine largeur. */
+  --hero-title-size: min(27vw, 17svh);
   --container-max: 100rem;
+
+  /* Vignettage léger des images (MediaFrame). */
+  --texture-vignette: radial-gradient(
+    ellipse at center,
+    transparent 55%,
+    color-mix(in srgb, var(--color-black) 55%, transparent) 100%
+  );
 
   /* Grain argentique (GrainOverlay). */
   --texture-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
@@ -95,12 +145,15 @@
 
 @media (width >= 48rem) {
   :root {
+    /* Titre du hero, tablet et desktop : 2 lignes, « BOXING CLUB » pleine largeur. */
+    --hero-title-size: min(16.5vw, 27svh, 18rem);
     --gutter: 2rem;
   }
 }
 
 @media (width >= 64rem) {
   :root {
+    --header-height: 6rem;
     --gutter: 3rem;
   }
 }

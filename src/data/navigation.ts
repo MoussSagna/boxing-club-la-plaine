@@ -9,6 +9,8 @@ export const ROUTES = {
   actualites: '/actualites',
   inscription: '/inscription',
   contact: '/contact',
+  /** Page interne (développement), absente de la navigation et du sitemap. */
+  designSystem: '/design-system',
 } as const
 
 /** Navigation principale (header desktop + menu mobile). */

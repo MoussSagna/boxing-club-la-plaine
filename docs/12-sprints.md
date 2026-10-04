@@ -36,43 +36,98 @@ prévues au Sprint 1 (voir `15-decisions-log.md`) :
 ---
 
 ## Sprint 1 — Foundation
-Status: TODO
+Status: COMPLETED (2026-10-04)
 
-Les éléments ci-dessous ont été amorcés au Sprint 0. Le Sprint 1 les valide
-visuellement, les ajuste et complète les composants de base restants
-(`06-components.md` : DisplayTitle, BodyText, IconButton, Link, Divider, MediaFrame).
+### Objectif
+Transformer les fondations du Sprint 0 en un design system exploitable : le hero et les sections doivent pouvoir se construire uniquement avec ces primitives.
 
-- design tokens (amorcé)
-- Tailwind (amorcé)
-- fonts (amorcé)
-- layout (amorcé)
-- container (amorcé)
-- grid (amorcé)
-- boutons (amorcé)
-- composants de base (partiel)
+### Tâches
+- [x] design tokens audités, aucune valeur hexadécimale dans les composants
+- [x] règle de contraste du rouge documentée et appliquée
+- [x] typographie : Display XL / L / M, Heading, Body, Small, Label, Micro
+- [x] container (`container-site`) et grille (`grid-site`) vérifiés sur 8 largeurs
+- [x] `Section` (thèmes dark / cream, espacements)
+- [x] boutons : primary, secondary, text, `IconButton`
+- [x] liens : `AppLink` (navigation, CTA, éditorial)
+- [x] images : `MediaFrame`, `ImageReveal`, `ParallaxImage`, traitements pilotés par props
+- [x] `GrainOverlay` (intensité, position, désactivation)
+- [x] `SectionEyebrow`, `SectionTitle`, `SectionHeader`
+- [x] `EditorialCard`, base des cartes pratiques / coachs / actualités
+- [x] Navbar et menu mobile audités
+- [x] tokens d'animation (durées, eases, distances, cascades)
+- [x] infrastructure GSAP auditée (nettoyage, StrictMode, reduced motion)
+- [x] page interne `/design-system`, non indexée
+
+### Validation
+- [x] `npm run build` et `npm run lint` sans erreur ni avertissement
+- [x] 8 routes + `/design-system` + 404 : affichage, metadata, layout
+- [x] aucun débordement à 375, 390, 430, 768, 1024, 1280, 1440, 1920
+- [x] clavier : Tab, Shift+Tab, Entrée, Échap, focus visible
+- [x] contraste WCAG AA sur tous les textes rendus
+- [x] aucune erreur ni avertissement console (React, GSAP, réseau)
+- [x] aucune donnée inventée
 
 ---
 
-## Sprint 2 — Navigation
-Status: TODO
+## Sprint 2 — Navigation + Page Transitions
+Status: COMPLETED (2026-10-04)
 
-- navbar desktop
-- menu mobile
-- transitions
-- responsive
-- accessibilité
+### Objectif
+Construire la navigation définitive et un système de transitions de pages cohérent avec la direction artistique.
+
+### Critères de validation
+- [x] Navbar desktop finalisée
+- [x] Navbar mobile finalisée
+- [x] Menu mobile animé
+- [x] CTA fonctionnel
+- [x] navigation active
+- [x] transitions de pages fonctionnelles
+- [x] retour navigateur fonctionnel
+- [x] deep links fonctionnels
+- [x] reduced motion fonctionnel
+- [x] keyboard navigation fonctionnelle
+- [x] responsive validé (375, 390, 430, 768, 1024, 1280, 1440, 1920)
+- [x] build OK
+- [x] lint OK
+- [x] console propre
+- [x] Design System Demo mise à jour
+- [x] audit Git terminé (recommandations en attente de validation)
 
 ---
 
-## Sprint 3 — Hero
-Status: TODO
+## Sprint 3 — Hero / Opening Experience
+Status: COMPLETED (2026-10-04) — finalisé avec la photographie réelle
 
-- hero
-- image
-- typography
-- CTA
-- animation d'entrée
-- scroll indicator
+### Objectif
+Créer le hero de la homepage, signature visuelle du site.
+
+### Critères de validation
+- [x] Hero visuellement fort (vérifié avec la photographie réelle)
+- [x] vraie hiérarchie éditoriale
+- [x] H1 clair
+- [x] photographie remplaçable
+- [x] header transparent fonctionnel
+- [x] CTA fonctionnel
+- [x] animation GSAP propre
+- [x] reduced motion
+- [x] mobile travaillé séparément
+- [x] aucune donnée inventée
+- [x] aucun overflow
+- [x] lint OK
+- [x] build OK
+- [x] console propre
+- [x] design-system mis à jour
+- [x] aucune régression Sprint 1/2
+
+### Finalisation avec la photographie réelle
+- [x] photographie intégrée sans retouche, en AVIF + JPEG sur 3 largeurs
+- [x] cadrage desktop et mobile, point focal réglé
+- [x] contraste mesuré sur les pixels réels derrière chaque texte, à 7 tailles d'écran
+- [x] CTA du header en contour au-dessus du hero : validé par le client
+
+### Reste à faire hors sprint
+- valider l'accroche qui remplacera « Paris 15 — Club de boxe »
+- obtenir une version plus large de la photographie (≥ 2600px)
 
 ---
 

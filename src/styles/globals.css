@@ -89,11 +89,20 @@
   text-wrap: balance;
 }
 
-/* Petit texte de label : uppercase, letter-spacing positif. */
+/* Label (navigation, boutons, sur-titres) : Small, uppercase, letter-spacing positif. */
 @utility label {
   font-size: var(--text-small);
-  line-height: var(--text-small--line-height);
-  letter-spacing: var(--text-small--letter-spacing);
+  line-height: var(--text-micro--line-height);
+  letter-spacing: var(--tracking-label);
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+/* Micro (numéros, mentions) : le plus petit niveau, toujours uppercase. */
+@utility micro {
+  font-size: var(--text-micro);
+  line-height: var(--text-micro--line-height);
+  letter-spacing: var(--tracking-micro);
   font-weight: 500;
   text-transform: uppercase;
 }

@@ -40,5 +40,7 @@ Assets attendus :
 - favicon
 - variantes clair/sombre si nécessaire
 
+**TODO :** obtenir du club une version SVG ou PNG transparent haute qualité. Le PNG actuel (sans transparence) est accepté en attendant et affiché sous un masque circulaire.
+
 ## Signature visuelle
 Le rouge doit agir comme un coup de poing visuel : ponctuel, fort et immédiatement identifiable.

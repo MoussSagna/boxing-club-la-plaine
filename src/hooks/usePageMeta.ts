@@ -7,6 +7,8 @@ type PageMeta = {
   description?: string
   /** Chemin de la route, ex. `/club`. */
   path: string
+  /** Demande aux moteurs de ne pas indexer la page (404, pages internes). */
+  noindex?: boolean
 }
 
 function setContent(selector: string, content: string) {
@@ -18,7 +20,12 @@ function setContent(selector: string, content: string) {
  * Les balises existent déjà dans index.html (valeurs par défaut) : on les
  * modifie au lieu d'en créer, pour éviter tout doublon.
  */
-export function usePageMeta({ title, description = SITE.description, path }: PageMeta) {
+export function usePageMeta({
+  title,
+  description = SITE.description,
+  path,
+  noindex = false,
+}: PageMeta) {
   useEffect(() => {
     const fullTitle = title ? `${title} — ${SITE.name}` : SITE.defaultTitle
     const url = new URL(path, SITE.url).href
@@ -29,5 +36,13 @@ export function usePageMeta({ title, description = SITE.description, path }: Pag
     setContent('meta[property="og:description"]', description)
     setContent('meta[property="og:url"]', url)
     document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]')?.setAttribute('href', url)
-  }, [title, description, path])
+
+    if (!noindex) return
+
+    const robots = document.createElement('meta')
+    robots.name = 'robots'
+    robots.content = 'noindex, nofollow'
+    document.head.append(robots)
+    return () => robots.remove()
+  }, [title, description, path, noindex])
 }

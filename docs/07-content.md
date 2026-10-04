@@ -78,3 +78,29 @@ Les types vivent dans `src/types/index.ts`, les données dans `src/data/`.
 Une donnée manquante vaut `TODO` (constante de `src/data/site.ts`), une liste
 non fournie reste vide, et une image manquante pointe vers
 `/assets/images/placeholder.svg`.
+
+## Hero (Sprint 3)
+```ts
+type HeroContent = {
+  title: { lead: string[]; connector: string[]; accent: string };
+  meta: string[];
+  primaryCta: NavItem;
+  secondaryCta?: NavItem;
+  media: {
+    src: string;
+    alt: string;
+    focalPoint?: { x: number; y: number };
+    focalPointMobile?: { x: number; y: number };
+    treatment?: 'none' | 'monochrome' | 'contrast' | 'red';
+  };
+};
+```
+
+État du contenu de `src/data/home.ts` :
+
+| Élément | Valeur | Statut |
+|---|---|---|
+| Titre | Boxing Club de la Plaine | validé (nom officiel) |
+| Mentions | Paris 15 — Club de boxe | provisoire, purement fonctionnel ; accroche à valider |
+| CTA | Inscription, Découvrir le club | noms de pages validés |
+| Image | photographie d'entraînement fournie par le club | validé |

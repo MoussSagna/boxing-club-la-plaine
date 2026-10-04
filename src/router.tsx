@@ -14,6 +14,8 @@ import { PlanningPage } from '@/pages/PlanningPage'
 export const router = createBrowserRouter([
   {
     Component: RootLayout,
+    // Rien à afficher pendant le chargement initial d'une route `lazy`.
+    HydrateFallback: () => null,
     children: [
       { path: ROUTES.home, Component: HomePage },
       { path: ROUTES.club, Component: ClubPage },
@@ -23,6 +25,13 @@ export const router = createBrowserRouter([
       { path: ROUTES.actualites, Component: ActualitesPage },
       { path: ROUTES.inscription, Component: InscriptionPage },
       { path: ROUTES.contact, Component: ContactPage },
+      {
+        // Page interne de référence du design system : chargée à la demande, non indexée.
+        path: ROUTES.designSystem,
+        lazy: async () => ({
+          Component: (await import('@/pages/DesignSystemPage')).DesignSystemPage,
+        }),
+      },
       { path: '*', Component: NotFoundPage },
     ],
   },

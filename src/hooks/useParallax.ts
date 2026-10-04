@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
 import { gsap, useGSAP } from '@/lib/gsap'
+import { EASE } from '@/lib/motion'
 
 type ParallaxOptions = {
   /** Amplitude du déplacement, en % de la hauteur de l'élément. Rester léger. */
@@ -32,7 +33,7 @@ export function useParallax<T extends HTMLElement = HTMLDivElement>({
         {
           yPercent: amount,
           scale,
-          ease: 'none',
+          ease: EASE.none,
           scrollTrigger: {
             trigger: element.parentElement ?? element,
             start: 'top bottom',

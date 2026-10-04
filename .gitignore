@@ -22,3 +22,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Sources et documents de travail : conservés en local, hors dépôt public
+/sources/
+/maquette.png
+/logo.png
+/favicon.png
+/download/
