@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0A0A0A" />
+
+    <!--
+      Métadonnées par défaut (lues par les robots qui n'exécutent pas le JS).
+      Le hook usePageMeta les met à jour page par page côté client.
+      Valeurs à garder synchronisées avec src/data/site.ts.
+    -->
+    <title>Boxing Club de la Plaine — Club de boxe à Paris 15</title>
+    <meta
+      name="description"
+      content="Boxing Club de la Plaine, club de boxe à Paris 15. Boxe loisir, compétition, boxe éducative et baby boxe. La boxe, sans compromis."
+    />
+    <link rel="canonical" href="https://www.boxingclubdelaplaine.com/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content="Boxing Club de la Plaine" />
+    <meta property="og:title" content="Boxing Club de la Plaine — Club de boxe à Paris 15" />
+    <meta
+      property="og:description"
+      content="Boxing Club de la Plaine, club de boxe à Paris 15. Boxe loisir, compétition, boxe éducative et baby boxe. La boxe, sans compromis."
+    />
+    <meta property="og:url" content="https://www.boxingclubdelaplaine.com/" />
+    <!-- TODO : remplacer par une image sociale dédiée 1200×630. -->
+    <meta
+      property="og:image"
+      content="https://www.boxingclubdelaplaine.com/assets/logo/logo-dark-512.png"
+    />
+    <meta name="twitter:card" content="summary" />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SportsClub",
+        "name": "Boxing Club de la Plaine",
+        "url": "https://www.boxingclubdelaplaine.com/",
+        "logo": "https://www.boxingclubdelaplaine.com/assets/logo/logo-512.png",
+        "sport": "Boxing"
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

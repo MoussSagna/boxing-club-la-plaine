@@ -1,0 +1,124 @@
+/*
+ * DESIGN TOKENS — source unique de vérité.
+ * Références : docs/02-colors.md, docs/03-typography.md, docs/04-design-system.md
+ *
+ * Aucune valeur de couleur, de police ou de taille display ne doit être écrite
+ * en dur dans un composant : tout passe par ces tokens (utilitaires Tailwind).
+ */
+
+@theme {
+  /* --- Couleurs : la palette Tailwind par défaut est désactivée. --- */
+  --color-*: initial;
+  --color-black: #0a0a0a;
+  --color-cream: #f1ede3;
+  --color-red: #c8102e;
+  --color-dark-red: #8f0d22;
+  --color-grey: #d6d2c8;
+  --color-white: #ffffff;
+
+  /* --- Typographie --- */
+  --font-display: 'Anton', 'Bebas Neue', 'Arial Narrow', Impact, sans-serif;
+  --font-sans: 'Inter Variable', 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* Display XL — hero : 51px (375) → 160px (1920) */
+  --text-display-xl: clamp(3rem, 1rem + 9.5vw, 10rem);
+  --text-display-xl--line-height: 0.92;
+  --text-display-xl--letter-spacing: 0;
+  /* Display L — titres de sections : 40px → 110px */
+  --text-display-l: clamp(2.5rem, 1rem + 6.5vw, 6.875rem);
+  --text-display-l--line-height: 0.95;
+  --text-display-l--letter-spacing: 0;
+  /* Display M — sous-sections : 32px → 64px */
+  --text-display-m: clamp(2rem, 1.25rem + 3vw, 4rem);
+  --text-display-m--line-height: 1;
+  --text-display-m--letter-spacing: 0.005em;
+  /* Body : 16px → 20px */
+  --text-body: clamp(1rem, 0.94rem + 0.28vw, 1.25rem);
+  --text-body--line-height: 1.55;
+  /* Small : 12px → 14px, uppercase + letter-spacing positif */
+  --text-small: clamp(0.75rem, 0.72rem + 0.14vw, 0.875rem);
+  --text-small--line-height: 1.4;
+  --text-small--letter-spacing: 0.18em;
+
+  /* --- Radius : « peu de radius » --- */
+  --radius-xs: 0;
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 2px;
+  --radius-xl: 2px;
+
+  /* --- Breakpoints : défauts Tailwind + très grand écran --- */
+  --breakpoint-3xl: 120rem;
+
+  /* --- Easing CSS (équivalents des eases GSAP de src/lib/motion.ts) --- */
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/*
+ * Tokens sémantiques (convention shadcn/ui).
+ * Thème par défaut : sombre. `data-theme="cream"` bascule une section
+ * sur le fond éditorial crème.
+ */
+:root,
+[data-theme='dark'] {
+  --background: var(--color-black);
+  --foreground: var(--color-cream);
+  --primary: var(--color-red);
+  --primary-foreground: var(--color-white);
+  --primary-hover: var(--color-dark-red);
+  --muted-foreground: color-mix(in srgb, var(--color-cream) 70%, transparent);
+  --border: color-mix(in srgb, var(--color-grey) 22%, transparent);
+  --ring: var(--color-cream);
+  /* Rouge sur noir = 3.4:1 → réservé au grand texte. Petit texte accentué : crème. */
+  --accent-text: var(--color-cream);
+}
+
+[data-theme='cream'] {
+  --background: var(--color-cream);
+  --foreground: var(--color-black);
+  --muted-foreground: color-mix(in srgb, var(--color-black) 72%, transparent);
+  --border: var(--color-grey);
+  --ring: var(--color-black);
+  /* Rouge sur crème = 5:1 → utilisable en petit texte. */
+  --accent-text: var(--color-red);
+}
+
+:root {
+  /* Marge latérale du container : 20px mobile → 64px grand écran. */
+  --gutter: 1.25rem;
+  --container-max: 100rem;
+
+  /* Grain argentique (GrainOverlay). */
+  --texture-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@media (width >= 48rem) {
+  :root {
+    --gutter: 2rem;
+  }
+}
+
+@media (width >= 64rem) {
+  :root {
+    --gutter: 3rem;
+  }
+}
+
+@media (width >= 96rem) {
+  :root {
+    --gutter: 4rem;
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-hover: var(--primary-hover);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --color-accent-text: var(--accent-text);
+}
