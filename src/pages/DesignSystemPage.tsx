@@ -11,12 +11,14 @@ import { Accent, SectionTitle } from '@/components/SectionTitle'
 import { Button } from '@/components/ui/button'
 import { IconButton } from '@/components/ui/icon-button'
 import { AppLink } from '@/components/ui/link'
+import { CLUB_HISTORY } from '@/data/history'
 import { CTA_NAV, MAIN_NAV, ROUTES } from '@/data/navigation'
 import { practices } from '@/data/practices'
 import { PLACEHOLDER_IMAGE } from '@/data/site'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { useScrollReveal } from '@/hooks/useScrollReveal'
 import { cn } from '@/lib/utils'
+import { ClubHistory } from '@/sections/club-history/ClubHistory'
 
 /*
  * PAGE INTERNE — référence visuelle du design system.
@@ -238,11 +240,22 @@ function NavigationShowcase() {
 }
 
 /**
- * Aperçu du vrai hero dans un cadre aux dimensions d'un écran donné (iframe sur `/`),
- * réduit pour tenir dans la page. Le hero dépend de la taille de l'écran : c'est la seule
- * façon de le montrer fidèlement en desktop et en mobile côte à côte.
+ * Aperçu de la vraie homepage dans un cadre aux dimensions d'un écran donné (iframe sur `/`),
+ * réduit pour tenir dans la page. Les sections dépendent de la taille de l'écran : c'est la
+ * seule façon de les montrer fidèlement en desktop et en mobile côte à côte.
  */
-function HeroPreview({ label, width, height }: { label: string; width: number; height: number }) {
+function PagePreview({
+  label,
+  width,
+  height,
+  anchor,
+}: {
+  label: string
+  width: number
+  height: number
+  /** Identifiant de la section à amener en haut du cadre. */
+  anchor?: string
+}) {
   const frameRef = useRef<HTMLDivElement>(null)
   const [scale, setScale] = useState(1)
   const [replay, setReplay] = useState(0)
@@ -275,7 +288,13 @@ function HeroPreview({ label, width, height }: { label: string; width: number; h
         <iframe
           key={replay}
           src={ROUTES.home}
-          title={`Aperçu du hero — ${label}`}
+          title={`Aperçu — ${label}`}
+          onLoad={(event) => {
+            if (!anchor) return
+            const page = event.currentTarget.contentDocument
+            // Laisse à la page le temps de s'afficher avant de l'amener sur la section.
+            window.setTimeout(() => page?.getElementById(anchor)?.scrollIntoView(), 500)
+          }}
           width={width}
           height={height}
           loading="lazy"
@@ -290,9 +309,9 @@ function HeroPreview({ label, width, height }: { label: string; width: number; h
 function HeroShowcase() {
   return (
     <div className="flex flex-col gap-10">
-      <HeroPreview label="Desktop" width={1440} height={900} />
+      <PagePreview label="Hero desktop" width={1440} height={900} />
       <div className="grid items-start gap-10 lg:grid-cols-[390px_1fr]">
-        <HeroPreview label="Mobile" width={390} height={844} />
+        <PagePreview label="Hero mobile" width={390} height={844} />
         <ul className="flex max-w-prose list-disc flex-col gap-2 pl-5 text-small text-muted-foreground">
           <li>
             Structure : <code>Hero</code> = <code>HeroMedia</code> + <code>HeroMeta</code> +{' '}
@@ -326,6 +345,48 @@ function HeroShowcase() {
           <li>Le hero n’existe qu’en thème sombre : pas de variante crème à ce stade.</li>
         </ul>
       </div>
+    </div>
+  )
+}
+
+function ClubHistoryShowcase() {
+  return (
+    <div className="grid items-start gap-10 lg:grid-cols-[390px_1fr]">
+      <PagePreview label="Histoire mobile" width={390} height={844} anchor="histoire" />
+      <ul className="flex max-w-prose list-disc flex-col gap-2 pl-5 text-small text-muted-foreground">
+        <li>
+          Structure : <code>ClubHistory</code> = <code>HistoryHeading</code> +{' '}
+          <code>HistoryText</code> + <code>HistoryTimeline</code> (<code>TimelineItem</code>) +{' '}
+          <code>HistoryPhilosophy</code> + <code>HistoryAction</code> + <code>HistoryMedia</code>.
+          Le contenu vient de <code>src/data/history.ts</code>.
+        </li>
+        <li>
+          Contenu : textes officiels du club, repris tels quels. Seul le titre « Une salle. Une
+          histoire. » est une composition de design, pas un slogan.
+        </li>
+        <li>
+          Desktop : titre sur 8 colonnes, texte sur 4 colonnes, timeline décalée sur 7 colonnes,
+          phrase de clôture sur 10 colonnes. Les versions crème et sombre sont affichées en vraie
+          grandeur juste en dessous.
+        </li>
+        <li>Mobile : sur-titre, titre, texte, timeline, phrase, lien.</li>
+        <li>
+          Timeline : liste ordonnée — un filet, l’année en très grand, l’événement. Ni carte, ni
+          fond.
+        </li>
+        <li>
+          Zone média : rien n’est affiché tant qu’aucune photographie d’archive n’est fournie.
+          Elle se place à droite du titre dès que <code>media</code> est renseigné.
+        </li>
+        <li>
+          Animation : trois reveals au scroll, joués une fois — introduction, timeline (date par
+          date), clôture. Recharger la page pour les rejouer.
+        </li>
+        <li>
+          Reduced motion : simples fondus de 0,3 s, aucun déplacement. Pour le voir, activer
+          « Réduire les animations » dans les réglages du système puis recharger.
+        </li>
+      </ul>
     </div>
   )
 }
@@ -637,6 +698,14 @@ export function DesignSystemPage() {
           <HeroShowcase />
         </Block>
       </Section>
+
+      <Section spacing="medium" className="border-t border-border">
+        <Block title="History / Club story — mobile, desktop, timeline, animation">
+          <ClubHistoryShowcase />
+        </Block>
+      </Section>
+      <ClubHistory content={CLUB_HISTORY} theme="cream" id="apercu-histoire-cream" />
+      <ClubHistory content={CLUB_HISTORY} theme="dark" id="apercu-histoire-dark" />
 
       <Section theme="dark" spacing="large" className="border-t border-border">
         <Block title='Thème — <Section theme="dark">'>

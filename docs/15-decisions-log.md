@@ -353,3 +353,70 @@ Chaque décision doit contenir :
 **Raison :** recommandations de l'audit du Sprint 2, validées par le client.
 **Impact :** ces fichiers restent visibles dans l'historique du commit du Sprint 0 : l'historique n'a pas été réécrit, à la demande du client.
 **Statut :** appliqué.
+
+---
+
+## 2026-10-05 — Sprint 4 : décisions
+
+### Histoire officielle intégrée
+**Décision :** la section « Histoire du club » reprend tels quels les textes communiqués par le club : création le 13 mai 1991, ouverture à la boxe amateur et éducative d'assaut en 2000, modernisation en 2019, phrase sur le club familial.
+**Raison :** informations officielles reçues ; elles remplacent les contenus provisoires envisagés.
+**Impact :** `src/data/history.ts` est renseigné. Rien n'a été ajouté ni reformulé.
+**Statut :** appliqué.
+
+### Titre de la section
+**Décision :** « Une salle. Une histoire. », seconde ligne en rouge.
+**Raison :** composition proposée par le client. C'est un choix de design, pas un slogan officiel : c'est noté dans les données.
+**Statut :** appliqué.
+
+### Section sur fond crème
+**Décision :** `theme="cream"` sur la homepage (le composant accepte aussi `dark`).
+**Raison :** respiration après le hero sombre, et registre papier / archive. Le header passe alors en light.
+**Statut :** appliqué.
+
+### Timeline en liste, pas en colonnes
+**Décision :** trois lignes superposées (filet, année en très grand, événement), décalées à droite du texte.
+**Raison :** éviter trois colonnes ou trois cartes identiques ; la même structure fonctionne en mobile ; l'asymétrie vient du décalage.
+**Statut :** appliqué.
+
+### Texte et timeline tous deux présents
+**Décision :** les paragraphes et la timeline coexistent, bien que 2000 et 2019 apparaissent dans les deux.
+**Raison :** demande du client. Les paragraphes racontent, la timeline donne les repères.
+**Statut :** appliqué.
+
+### Phrase de clôture mise en avant
+**Décision :** la phrase sur le club familial est composée en Anton, « club familial » en rouge.
+**Raison :** en faire un élément typographique, comme demandé. Le rouge reste un accent sur deux mots.
+**Statut :** appliqué.
+
+### Zone média vide tant qu'il n'y a pas de photographie
+**Décision :** `HistoryMedia` n'affiche rien sans photographie. Pas de cadre « à venir », pas de réemploi de la photo du hero.
+**Raison :** la section doit fonctionner sans seconde photographie ; le contenu officiel suffit à l'occuper.
+**Impact :** remplace la zone hachurée « Photographie à venir » de la première version du sprint.
+**Statut :** en attente de la photographie.
+
+### Encadrants : données seulement
+**Décision :** les sept encadrants sont enregistrés dans `src/data/coaches.ts` avec leurs diplômes, fonctions et titres ; ils ne sont affichés nulle part. Le type `Coach` gagne `qualifications` et `achievements`.
+**Raison :** consigne du client ; la page `/coachs` fera l'objet d'un sprint dédié.
+**Impact :** les noms présents sur `maquette.png` sont désormais confirmés par une source officielle.
+**Statut :** appliqué.
+
+### Date de création dans les données structurées
+**Décision :** `foundingDate: 1991-05-13` ajouté au JSON-LD de `index.html`.
+**Raison :** donnée officielle, utile au référencement.
+**Statut :** appliqué.
+
+### Hero inchangé
+**Décision :** les mentions provisoires du hero (« Paris 15 — Club de boxe ») ne sont pas modifiées.
+**Raison :** le hero est hors périmètre de ce sprint. « Depuis 1991 » pourrait désormais y figurer : à décider.
+**Statut :** à valider.
+
+### Correctifs avant commit (2026-10-05)
+**Décision :** la première entrée de la timeline affiche la date complète « 13 MAI 1991 » ; le hero gagne la mention « Depuis 1991 » au-dessus de « Paris 15 — Club de boxe ».
+**Raison :** demandes du client ; les deux informations sont officielles.
+**Impact :**
+- `HistoryEvent` gagne un champ `date` ; `HeroContent` gagne un champ `since`.
+- Dans la timeline, les événements passent à droite, alignés sur le bord droit : avec une date trois fois plus large que les autres, une colonne de gauche commune n'était plus possible. C'est le seul changement de mise en page de la timeline.
+- À 1024px, « Création du club » passe sur deux lignes.
+- Aucune nouvelle animation : la date suit celle de l'année, la mention suit celle des mentions du hero.
+**Statut :** appliqué, validé par le client pour le principe.

@@ -73,3 +73,15 @@ Sprint 1 : contrôle automatisé du contraste de tous les textes rendus sur `/`,
 | « Découvrir le club » | 15,2:1 | 4,5:1 |
 
 « PLAINE » est au seuil : le rouge de marque plafonne à 3,4:1 sur noir pur. Le voile est réglé pour le respecter ; il ne faut pas l'alléger sous cette ligne.
+
+## Histoire du club (Sprint 4)
+- `section` nommée par son `h2` ; la page garde un seul `h1` (hero), suivi de ce `h2`.
+- Timeline : liste ordonnée (`ol`) nommée « Dates clés du club », années balisées par `time`. Lue dans l'ordre : « 1991 Création du club », etc. Elle se comprend sans animation ni mise en forme.
+- Texte sélectionnable, aucune information portée par la seule couleur : « club familial » est en rouge mais fait partie de la phrase.
+- Contraste sur fond crème : texte noir 16,9:1, texte secondaire 7,7:1, rouge 5,0:1. En thème sombre : texte secondaire 8,4:1, rouge 3,4:1 (uniquement en grand texte).
+- Le lien est atteignable au clavier, avec focus visible, et son libellé (« Découvrir l'histoire ») diffère de celui du hero.
+- Reduced motion : fondus courts, aucun déplacement.
+
+### Correctifs Sprint 4
+- Timeline : chaque entrée se lit « 13 mai 1991 — Création du club ». La date est un `time datetime="1991-05-13"` ; le tiret est présent dans le texte, masqué à l'écran.
+- Hero : « Depuis 1991 » et « Paris 15 — Club de boxe » sont deux paragraphes lus dans cet ordre, avant le `h1`. Contraste mesuré sur la photographie : 7,7:1 au pire cas (seuil 4,5:1).

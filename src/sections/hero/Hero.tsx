@@ -105,7 +105,7 @@ export function Hero({ content }: { content: HeroContent }) {
         data-hero-content
         className="container-site flex flex-col gap-5 pt-[calc(var(--header-height)+2rem)] pb-6 md:gap-6 md:pb-8 lg:pb-10"
       >
-        <HeroMeta items={content.meta} />
+        <HeroMeta since={content.since} items={content.meta} />
 
         {/* Desktop : les CTA se logent à droite de la dernière ligne du titre, plus courte. */}
         <div className="relative flex flex-col gap-6 md:gap-8">

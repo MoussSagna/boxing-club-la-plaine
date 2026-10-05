@@ -115,3 +115,22 @@ Réutilisés : `Section`, `SectionEyebrow`, `Accent`, `Button`, `AppLink`, `Medi
 - `useHeaderTheme` : renvoie `{ theme, transparent }`.
 
 Contenu : `src/data/home.ts` (`HOME_HERO`), typé par `HeroContent`.
+
+## Sprint 4 — Histoire du club
+
+Dossier `src/sections/club-history/`.
+
+| Composant | Rôle |
+|---|---|
+| `ClubHistory` | Composition, thème et reveals au scroll ; reçoit son contenu en props |
+| `HistoryHeading` | Sur-titre et titre monumental, lignes masquées pour le reveal |
+| `HistoryText` | Paragraphes du récit |
+| `HistoryTimeline` | Liste ordonnée des dates |
+| `TimelineItem` | Une date : filet, année, événement |
+| `HistoryPhilosophy` | Phrase de clôture, avec un passage mis en avant |
+| `HistoryMedia` | Photographie d'archive ; n'affiche rien tant qu'il n'y en a pas |
+| `HistoryAction` | Lien discret vers `/club` |
+
+Réutilisés : `Section`, `SectionEyebrow`, `SectionTitle`, `Accent`, `Button`, `AppLink`, `MediaFrame`, `useReducedMotion`. Aucune nouvelle primitive.
+
+Supprimé : l'aperçu temporaire « Plus qu'une salle. Une histoire. » posé au Sprint 0 sur la homepage.

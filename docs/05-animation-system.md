@@ -161,3 +161,16 @@ Un seul fondu de 0,3s sur l'image et le contenu. Aucun déplacement, aucun clip-
 
 ### Correctif commun
 `refreshScrollTriggers()` (dans `src/lib/gsap.ts`) remplace les appels directs à `ScrollTrigger.refresh()` : il recalcule les déclenchements sans déplacer la page.
+
+## Histoire du club (Sprint 4)
+Trois reveals au scroll, chacun joué une seule fois quand son bloc atteint 85 % de la hauteur d'écran. Plus discrets et plus courts que le hero.
+
+| Bloc | Élément | Animation |
+|---|---|---|
+| Introduction | Lignes du titre | montée derrière un masque, 0,9s |
+| | Sur-titre, paragraphes | fondu + 12px, 0,6s, en cascade |
+| | Photographie (si présente) | rideau vertical, 0,9s |
+| Timeline | Par date, à 0,15s d'écart | filet qui se trace (0,9s), année qui monte (0,6s), événement en fondu (0,6s) |
+| Clôture | Phrase, puis lien | fondu + 24px, 0,9s |
+
+Ni scroll-jacking, ni épinglage, ni parallax, ni animation permanente. Reduced motion : fondus de 0,3s, aucun déplacement. Tout le contenu est dans la page sans l'animation.

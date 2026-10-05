@@ -15,6 +15,8 @@ export const HOME_HERO: HeroContent = {
     connector: ['de', 'la'],
     accent: 'Plaine',
   },
+  // VALIDÉ — repère historique : le club a été créé le 13 mai 1991.
+  since: 'Depuis 1991',
   // PROVISOIRE — mentions purement fonctionnelles (lieu + nature du club), pas un slogan.
   // À remplacer par l'accroche validée par le club.
   meta: [SITE.location, 'Club de boxe'],

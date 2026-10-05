@@ -209,3 +209,52 @@ Le header a trois états : `dark`, `cream`, `transparent`. Une section demande l
 
 ## Performance — baseline
 Bundle principal après Sprint 3 : 495 Ko (165 Ko gzip). Aucune dépendance ajoutée, ni vidéo, ni canvas, ni flou.
+
+---
+
+# Histoire du club (Sprint 4)
+Première section après le hero. Le hero dit « Boxing Club de la Plaine » ; la section répond « Depuis 1991 ». Fond crème (papier, archive) après le hero sombre.
+
+## Composition
+```text
+desktop (12 colonnes)                              mobile
+— DEPUIS 1991                                      — DEPUIS 1991
+UNE SALLE.                                         UNE SALLE.
+UNE HISTOIRE.               [zone média, si        UNE HISTOIRE.
+                             une photo existe]     texte (3 paragraphes)
+texte          ──────────────────────────          ──────────────
+(col. 1–4)     1991   Création du club             1991
+               ──────────────────────────          Création du club
+               2000   Ouverture à la boxe…         ──────────────
+               ──────────────────────────          2000 …
+               2019   Modernisation…               2019 …
+                      (col. 6–12)                  LE CLUB EST UN CLUB FAMILIAL…
+LE CLUB EST UN CLUB FAMILIAL OÙ LES DÉBUTANTS…     Découvrir l'histoire →
+Découvrir l'histoire →
+```
+- Titre : colonnes 1 à 8, `text-display-xl`, seconde ligne en rouge.
+- Texte : colonnes 1 à 4. Timeline : colonnes 6 à 12, décalée — c'est elle qui porte l'asymétrie.
+- Phrase de clôture : colonnes 1 à 10, en Anton (`text-display-m` desktop, `text-heading` mobile), « club familial » en rouge.
+- Pas de carte, pas de fond, pas de radius, pas d'ombre.
+
+## Timeline
+Liste ordonnée. Chaque entrée : un filet, la date en très grand à gauche (`text-display-l`), l'événement aligné à droite (dessous en mobile). Composant `TimelineItem`.
+
+- Quand la date complète est connue, elle est affichée en entier : « 13 MAI 1991 ». Sinon, l'année seule (« 2000 », « 2019 »).
+- La date complète tient à toutes les largeurs, mobile compris : pas de forme abrégée.
+- Les événements sont alignés à droite pour garder le même bord quelle que soit la largeur de la date.
+
+## Zone média
+`HistoryMedia` affiche une photographie d'archive ou du club (cadre 4/5, à droite du titre) dès que `media` est renseigné dans `src/data/history.ts`. Sans photographie, rien n'est affiché : ni image de remplissage, ni réemploi de la photo du hero. État actuel : aucune photographie, la section ne charge aucune image.
+
+## Thèmes
+`theme="cream"` sur la homepage ; `theme="dark"` disponible. Les deux sont visibles sur `/design-system`.
+
+## Mentions du hero (mise à jour Sprint 4)
+Deux lignes au-dessus du titre, secondaires par rapport à lui :
+
+```text
+— DEPUIS 1991
+  PARIS 15 — CLUB DE BOXE
+```
+« Depuis 1991 » porte le trait rouge ; les autres mentions sont alignées sur son texte. Même style (`label`), même couleur, même animation que les mentions d'origine.

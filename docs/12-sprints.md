@@ -131,13 +131,34 @@ Créer le hero de la homepage, signature visuelle du site.
 
 ---
 
-## Sprint 4 — Histoire
-Status: TODO
+## Sprint 4 — Histoire du club
+Status: COMPLETED (2026-10-05) — en local, en attente de validation
 
-- intro
-- timeline
-- images
-- ScrollTrigger
+### Objectif
+Créer la section « Histoire du club » de la homepage, juste après le hero, avec les informations officielles communiquées par le club.
+
+### Critères de validation
+- [x] vraie histoire du club intégrée
+- [x] 1991 / 2000 / 2019 correctement présentés
+- [x] aucune information inventée
+- [x] timeline éditoriale
+- [x] phrase sur l'esprit familial
+- [x] design cohérent avec le hero
+- [x] pas de cartes SaaS
+- [x] mobile travaillé
+- [x] reduced motion
+- [x] accessible
+- [x] design-system mis à jour
+- [x] build OK
+- [x] lint OK
+- [x] aucune régression
+- [x] aucun commit Git
+
+### Hors section
+- données des sept encadrants enregistrées dans `src/data/coaches.ts`, non affichées (futur sprint `/coachs`)
+
+### Reste à faire hors sprint
+- photographie d'archive ou du club pour la zone média
 
 ---
 

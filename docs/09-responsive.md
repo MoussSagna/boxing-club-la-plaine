@@ -68,3 +68,9 @@ Sprint 1 : aucun débordement horizontal et aucun élément hors cadre sur `/`, 
 - ≥ 1024px : image plein cadre.
 - < 1024px (mobile et tablet) : image en bandeau sur les 56 % supérieurs du hero, titre posé dessous. La photographie étant très horizontale, c'est ce qui évite un recadrage excessif.
 - Largeur de la photo visible : 47 % à 375×667, 38 % à 390×844, 62 % à 768×1024, 62 % à 1024×768, 75 % à 1440×900, 83 % en 16:9.
+
+## Histoire du club (Sprint 4)
+- Mobile : sur-titre, titre, texte, timeline (année au-dessus de l'événement), phrase, lien.
+- Tablet (768) : même ordre ; dans la timeline, année et événement côte à côte.
+- Desktop (≥ 1024) : texte sur 4 colonnes à gauche, timeline sur 7 colonnes à droite, phrase sur 10 colonnes.
+- Vérifié à 375×667, 390×844, 430×932, 768×1024, 1024×768, 1280×800, 1440×900, 1920×1080 : aucun débordement, aucune collision, ordre de lecture identique partout.

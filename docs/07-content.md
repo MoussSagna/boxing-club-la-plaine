@@ -104,3 +104,52 @@ type HeroContent = {
 | Mentions | Paris 15 — Club de boxe | provisoire, purement fonctionnel ; accroche à valider |
 | CTA | Inscription, Découvrir le club | noms de pages validés |
 | Image | photographie d'entraînement fournie par le club | validé |
+
+## Histoire du club (Sprint 4) — données officielles
+Source : informations communiquées par le club le 2026-10-04. Fichier : `src/data/history.ts` (`historyIntro`, `historyEvents`, `clubPhilosophy`, `CLUB_HISTORY`, `CLUB_FOUNDED`).
+
+```ts
+type HistoryEvent = { id: string; year: string; title: string; description?: string; image?: string };
+
+type ClubHistoryContent = {
+  eyebrow: string;
+  title: { lines: string[]; accent: string };
+  paragraphs: string[];
+  events: HistoryEvent[];
+  philosophy: { text: string; highlight?: string };
+  action: NavItem;
+  media?: { src: string; alt: string; width?: number; height?: number; treatment?: ... };
+};
+```
+
+| Élément | Valeur | Statut |
+|---|---|---|
+| Sur-titre | Depuis 1991 | officiel (création le 13 mai 1991) |
+| Titre | Une salle. Une histoire. | composition de design, pas un slogan officiel |
+| Paragraphes | les trois textes fournis par le club | officiel, repris tels quels |
+| Timeline | 13 mai 1991, 2000, 2019 | officiel ; la première entrée porte la date complète (`date: '1991-05-13'`) |
+| Phrase de clôture | « Le club est un club familial où… » | officiel, reprise telle quelle |
+| Lien | Découvrir l'histoire → `/club` | validé |
+| Photographie | absente | à fournir |
+
+## Encadrants — données officielles
+Fichier : `src/data/coaches.ts`. Les sept encadrants sont enregistrés (nom, diplômes et fonctions, titres sportifs), **sans être affichés** : ils serviront au sprint dédié à `/coachs`. Portraits : placeholder en attendant.
+
+```ts
+type Coach = {
+  id: string;
+  name: string;
+  role?: string;
+  specialty?: string;
+  qualifications: string[];
+  achievements?: string[];
+  image: string;
+  bio?: string;
+};
+```
+
+### Mise à jour du hero
+| Élément | Valeur | Statut |
+|---|---|---|
+| Repère historique (`since`) | Depuis 1991 | officiel |
+| Mentions (`meta`) | Paris 15 — Club de boxe | provisoire, inchangé |
