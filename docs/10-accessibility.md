@@ -113,3 +113,12 @@ Sprint 1 : contrôle automatisé du contraste de tous les textes rendus sur `/`,
 - Chaque séance se lit d'une traite, horaires en `time`.
 - Repères : la source du regroupement est écrite, pas suggérée par la couleur.
 - Contraste contrôlé sur les 127 textes de la page : aucun échec. Liens atteignables au clavier dès le chargement, 44px minimum.
+
+## Page Inscription (Sprint 10)
+- Un `h1`, quatre `h2`, les étapes en `h3` dans une liste ordonnée, les pratiques en `h4`.
+- Deux navigations internes nommées (« Votre situation », « Les étapes de l'inscription ») ; les ancres placent la section juste sous le header.
+- Liens externes et PDF annoncés (« nouvelle fenêtre », « PDF, nouvelle fenêtre »).
+- Tarifs dans une liste de définitions : chaque prix est associé à sa pratique par le texte, pas par la couleur.
+- Aide-mémoire : liste statique ; les cases sont décoratives.
+- Contraste contrôlé sur les 99 textes de la page : aucun échec. 24 liens atteignables au clavier, focus visible.
+- Défilement : une ancre ne reprend plus la position de l'ancre précédente (correctif de `RootLayout`).

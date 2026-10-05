@@ -35,6 +35,8 @@ type AppLinkProps = Omit<ComponentProps<'a'>, 'href'> & {
 
 const EXTERNAL = /^https?:\/\//
 const INTERNAL = /^\//
+/** Fichier servi par le site (PDF…) : ce n'est pas une page, le routeur ne doit pas le prendre. */
+const FILE = /\.[a-z0-9]{2,5}$/i
 
 export function AppLink({
   href,
@@ -45,6 +47,8 @@ export function AppLink({
   ...props
 }: AppLinkProps) {
   const isExternal = EXTERNAL.test(href)
+  const isFile = INTERNAL.test(href) && FILE.test(href)
+  const opensNewWindow = isExternal || isFile
   const Arrow = isExternal ? ArrowUpRight : ArrowRight
   const classes = cn(
     arrow && variant !== 'plain' && 'inline-flex items-center gap-2 [&_svg]:size-4',
@@ -55,11 +59,16 @@ export function AppLink({
     <>
       {children}
       {arrow && <Arrow aria-hidden="true" />}
-      {isExternal && <span className="sr-only"> (nouvelle fenêtre)</span>}
+      {opensNewWindow && (
+        <span className="sr-only">
+          {' '}
+          ({isFile ? `${href.split('.').pop()?.toUpperCase()}, ` : ''}nouvelle fenêtre)
+        </span>
+      )}
     </>
   )
 
-  if (INTERNAL.test(href)) {
+  if (INTERNAL.test(href) && !isFile) {
     // NavLink pose aria-current="page" sur la route active.
     const RouterLink = variant === 'nav' || variant === 'nav-large' ? NavLink : Link
     return (
@@ -73,7 +82,7 @@ export function AppLink({
     <a
       href={href}
       className={classes}
-      {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+      {...(opensNewWindow ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
       {...props}
     >
       {content}

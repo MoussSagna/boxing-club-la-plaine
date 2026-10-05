@@ -191,3 +191,9 @@ Dans `src/sections/schedule/` :
 | `PlanningCallout` | bloc d'appel (renvoi coachs, clôture) |
 
 Données : `src/data/planning.ts` (textes de la page uniquement). Les horaires restent dans `src/data/schedule.ts`, seule source. `MaskedLine` et `useRowReveal` sont repris de la page Cours.
+
+## Sprint 10 — Page Inscription
+
+Dossier `src/sections/registration/` : `RegistrationHero`, `RegistrationTrial`, `RegistrationSteps`, `RegistrationStep`, `RegistrationChecklist`, `RegistrationContact`, et `shared.tsx` (`RichText`, `BigEmail`, `WRAPPING_BUTTON`).
+
+Données : `src/data/registration.ts`. Fichiers : `public/assets/documents/`. Réutilisés : `Section`, `SectionEyebrow`, `SectionTitle`, `Button`, `AppLink`, `MaskedLine`, `useRowReveal`. Aucune dépendance.

@@ -19,7 +19,8 @@ export const MAIN_NAV: NavItem[] = [
   { label: 'Cours', href: ROUTES.cours },
   { label: 'Planning', href: ROUTES.planning },
   { label: 'Coachs', href: ROUTES.coachs },
-  { label: 'Actualités', href: ROUTES.actualites },
+  // « Actualités » est retiré de la navigation pour le moment (demande du client).
+  // La route /actualites existe toujours : il suffit de remettre l'entrée ici.
 ]
 
 /** Liens secondaires (menu mobile + footer). */

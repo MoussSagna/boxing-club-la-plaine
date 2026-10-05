@@ -241,6 +241,19 @@ Status: COMPLETED (2026-10-05) — en local, en attente de validation
 
 ---
 
+## Sprint 10 — Inscription & cours d'essai
+Status: COMPLETED (2026-10-05) — en local, en attente de validation
+
+- [x] page `/inscription` : ouverture, cours d'essai, quatre étapes, aide-mémoire, contact
+- [x] informations officielles reprises sans en changer le sens ; aucun formulaire en ligne, aucune coordonnée bancaire
+- [x] documents officiels disponibles branchés ; un document non publié (« à fournir »)
+- [x] onglet « Actualités » retiré de la navigation
+- [x] reveals GSAP, reduced motion
+- [x] métadonnées de la page
+- [x] lint OK, build OK, console propre
+
+---
+
 ## Sprints suivants (plan initial, à renuméroter)
 
 ## Sprint 8 — Actualités

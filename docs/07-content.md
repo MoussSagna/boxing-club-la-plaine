@@ -267,3 +267,36 @@ Textes fournis par le client, éditoriaux et non officiels : « À vous de chois
 **À valider par le club :** le planning ne porte pas la mention « Assaut ». Le repère regroupe les séances « Sparing » et « Passage de gants », et l'affiche explicitement.
 
 Ajouts de l'agent : la phrase « Quelques repères pour lire le planning, d'après les mentions de chaque séance. », le sur-titre « Choisir sa séance » (repris du brief), le sur-titre « Les coachs », et le titre masqué « Les entraînements de la semaine ».
+
+## Inscription (Sprint 10) — informations officielles
+Fichier : `src/data/registration.ts` (`REGISTRATION`).
+
+| Élément | Valeur |
+|---|---|
+| E-mail du club | bclaplaine@gmail.com (dossier et cours d'essai) |
+| Licence | https://monespace.ffboxe.com/auth/login |
+| Tarifs | Loisir — BEA : 360 € ; BA — Compétiteurs : 360 € |
+| Règlement | par virement bancaire uniquement ; RIB = PDF officiel hébergé sur le site actuel du club |
+
+Phrases reprises telles quelles : « Vous n'avez rien à payer lors de la création de la licence sur le site de la FFB. », « Tout dossier incomplet sera rejeté. », « par virement bancaire UNIQUEMENT ».
+
+### Documents publiés (`public/assets/documents/`)
+Copies des fichiers du dossier local `download/`, renommées.
+
+| Document | Loisir — BEA | BA — Compétiteurs |
+|---|---|---|
+| Règlement intérieur | oui | oui (même fichier) |
+| Charte éthique | oui | oui (même fichier) |
+| Demande de licence | oui | oui (même fichier) |
+| Certificat médical (saison 2026-2027) | version BEA | version BA |
+| Certificat ophtalmologique (saison 2026-2027) | — | oui |
+| Engagement amateur | — | **non publié** : « Document à fournir » |
+| Demande de cours d'essai | section cours d'essai | |
+
+### Points à valider par le club
+- **Engagement amateur** : le fichier fourni cite comme coachs Christophe Tiozzo et Christopher Coué. Il n'est pas publié ; une version à jour est attendue.
+- **Certificat ophtalmologique** : présent dans le dossier BA mais absent de la liste de quatre documents du brief. Publié, car c'est un document fédéral du dossier compétiteur.
+- **Règlement intérieur** : le fichier d'origine s'intitule « 2025-2026 », les certificats « 2026-2027 ».
+- **Deux adresses e-mail** dans les informations reçues : `bclaplaine@gmail.com` et `boxingclubdelaplaine@gmail.com` (citée pour le cours d'essai). Le site n'utilise que la première, comme demandé.
+- **RIB** : le lien pointe vers le site actuel du club ; il cessera de fonctionner si ce site est fermé. Prévoir d'héberger le PDF avec le nouveau site.
+- Intitulés ajoutés par l'agent : « Quatre étapes, un dossier. », « Tout est prêt ? », « Une question ? / Écrivez au club. », et les trois repères du cours d'essai.

@@ -219,3 +219,6 @@ Règle ajoutée : un élément qui contient un lien ne doit pas être révélé 
 - Feuille : le reveal jour par jour vit désormais dans `ScheduleSheet`, commun à l'accueil et à la page (filet, nom du jour, puis numéro et séances).
 - Survol d'une séance inchangé : horaire en rouge, trait rouge, glissement de 4px.
 - Reduced motion : simples fondus, aucune translation.
+
+## Page Inscription (Sprint 10)
+`useRowReveal` partout : ouverture au chargement, puis chaque bloc et chaque étape à son entrée dans l'écran (filet, titre, puis numéro, texte, tarifs et bouton en cascade). Aucune animation permanente ; reduced motion : simples fondus.

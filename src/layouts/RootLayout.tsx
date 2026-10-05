@@ -30,9 +30,10 @@ if (!isEmbedded && isFreshVisit()) {
   }
 }
 
-// Tout chargement direct porte la même clé (`default`) : on la distingue par le chemin.
+// Tout chargement direct porte la même clé (`default`) : on la distingue par le chemin et
+// l'ancre, sinon un lien d'ancre (#etape-…) hériterait de la position de l'ancre précédente.
 const getScrollKey = (location: Location) =>
-  location.key === 'default' ? location.pathname : location.key
+  location.key === 'default' ? location.pathname + location.hash : location.key
 
 export function RootLayout() {
   const mainRef = useRef<HTMLElement>(null)

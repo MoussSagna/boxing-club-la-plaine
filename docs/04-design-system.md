@@ -372,3 +372,29 @@ La section de l'accueil est un aperçu ; `/planning` est la page pratique. Même
 
 ## Repères de lecture
 Technique, Cardio, Préparation physique, Assaut, Jeunes. Ce ne sont ni des filtres ni des catégories officielles. Chaque repère affiche la mention du planning sur laquelle il s'appuie, puis les séances concernées (« Mardi 18h »), calculées à partir des données.
+
+---
+
+# Page Inscription (Sprint 10)
+Page de conversion : elle remplace une procédure dense par deux parcours lisibles, « Je veux essayer » et « Je veux m'inscrire ». Typographique, sans image, sans formulaire en ligne.
+
+| # | Section | Fond | Contenu |
+|---|---|---|---|
+| 1 | Ouverture | noir | « Inscriptions », H1 « Votre premier / round commence ici. », phrase, deux ancres : essayer / m'inscrire |
+| 2 | Cours d'essai | crème | « Essayez d'abord. » : formulaire, e-mail au club, date et horaire définis avec le club |
+| 3 | Inscription | noir | le parcours en un regard (01 à 04), puis les quatre étapes détaillées |
+| 4 | Aide-mémoire | crème | « Avant d'envoyer » : sept points |
+| 5 | Contact | noir | « Écrivez au club. », l'adresse e-mail, lien vers le planning |
+
+## Les quatre étapes
+Chaque étape : grand numéro rouge, filet à amorce rouge, titre en Anton, puis son contenu.
+1. **Prendre sa licence** : lien externe vers l'espace FFB ; la phrase « rien à payer » est mise en exergue par un filet rouge.
+2. **Préparer son dossier** : deux colonnes, « Loisir — BEA » et « BA — Compétiteurs », chacune avec ses documents à télécharger et « + Une photo d'identité ».
+3. **Régler le club** : les deux tarifs en très grand (Anton), bouton vers le RIB officiel. Aucune coordonnée bancaire affichée.
+4. **Envoyer son dossier** : adresse e-mail en très grand, bouton mailto, « Tout dossier incomplet sera rejeté. » en exergue.
+
+Mots mis en évidence (LISIBLEMENT, SIGNEZ, UNIQUEMENT) : par la graisse, pas seulement par la couleur.
+
+## Évolutions communes
+- `AppLink` reconnaît les fichiers servis par le site (PDF) : lien simple, nouvelle fenêtre, annoncé « PDF, nouvelle fenêtre ».
+- Navigation : l'onglet « Actualités » est retiré du header, du menu mobile, du pied de page et du sitemap. La route `/actualites` existe toujours.

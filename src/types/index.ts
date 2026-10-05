@@ -293,3 +293,23 @@ export type PlanningPageContent = {
     secondaryCta: NavItem
   }
 }
+
+/** Pratique pour laquelle on s'inscrit (appellations du club). */
+export type RegistrationPractice = {
+  id: string
+  label: string
+  /** Tarif en euros, tel que communiqué par le club. */
+  price: number
+}
+
+export type RegistrationDocument = {
+  id: string
+  title: string
+  /** Pratiques concernées (identifiants de `RegistrationPractice`). */
+  practiceIds: string[]
+  /** Fichier officiel. `null` : document pas encore fourni — jamais de lien fabriqué. */
+  href: string | null
+}
+
+/** Fragment de texte ; `strong` le met en évidence typographiquement. */
+export type TextPart = { text: string; strong?: boolean }

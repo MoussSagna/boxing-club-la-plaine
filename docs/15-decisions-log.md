@@ -611,3 +611,49 @@ Chaque décision doit contenir :
 **Décision :** « 18h — 20h30 », comme sur l'accueil (le brief montrait aussi « 18:00 — 20:30 » à titre conceptuel).
 **Raison :** conserver le format validé au Sprint 5.
 **Statut :** appliqué.
+
+---
+
+## 2026-10-05 — Sprint 10 : décisions
+
+### Onglet « Actualités » retiré
+**Décision :** l'entrée disparaît de la navigation (header, menu mobile, pied de page) et du sitemap ; la route reste.
+**Raison :** demande du client, « pour le moment ».
+**Impact :** modification de la navigation validée, sur instruction explicite. La navigation reste centrée.
+**Statut :** appliqué.
+
+### Documents officiels publiés
+**Décision :** les formulaires du dossier local `download/` sont copiés dans `public/assets/documents/` sous des noms simples et proposés au téléchargement.
+**Raison :** le brief demande d'utiliser les fichiers officiels présents dans le projet. Les fichiers identiques entre les deux pratiques ne sont publiés qu'une fois.
+**Impact :** ces PDF redeviennent publics (ils avaient été retirés du dépôt au nettoyage du Sprint 3, comme fichiers de travail). `download/` reste ignoré.
+**Statut :** à valider.
+
+### « Engagement amateur » non publié
+**Décision :** listé pour la pratique BA avec la mention « Document à fournir », sans lien.
+**Raison :** le fichier fourni nomme des coachs qui ne sont plus à jour, dont Christophe Tiozzo.
+**Statut :** en attente d'une version à jour.
+
+### Une seule adresse e-mail
+**Décision :** `bclaplaine@gmail.com` pour le dossier comme pour le cours d'essai.
+**Raison :** consigne du brief, bien qu'une seconde adresse figure dans les informations d'origine.
+**Statut :** à confirmer par le club.
+
+### RIB par lien externe
+**Décision :** bouton vers le PDF officiel hébergé sur le site actuel du club ; aucun IBAN ni BIC dans le site.
+**Raison :** consigne du client.
+**Impact :** dépendance au site actuel ; à rapatrier avant sa fermeture.
+**Statut :** appliqué.
+
+### Cours d'essai avant l'inscription, sans réservation
+**Décision :** section distincte placée avant le parcours d'inscription ; formulaire à télécharger puis e-mail. Aucun créneau à choisir.
+**Raison :** procédure du club ; éviter que le visiteur croie devoir prendre sa licence avant d'essayer.
+**Statut :** appliqué.
+
+### Pratiques et tarifs répartis dans les étapes
+**Décision :** pas de section « Pratiques » séparée : les deux pratiques structurent l'étape 02 (documents) et l'étape 03 (tarifs).
+**Raison :** éviter d'afficher trois fois les mêmes tarifs ; aucune différence entre pratiques n'a été fournie hors documents.
+**Statut :** à valider.
+
+### Correctifs communs
+- `AppLink` : prise en charge des fichiers (PDF) ; sans cela le routeur les prenait pour des pages.
+- `RootLayout` : la clé de restauration du défilement tient compte de l'ancre.

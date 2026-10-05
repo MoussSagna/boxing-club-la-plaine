@@ -97,3 +97,9 @@ Sprint 1 : aucun débordement horizontal et aucun élément hors cadre sur `/`, 
 - Vérifié à 375×667, 390×844, 430×932, 768×1024, 1024×768, 1280×720, 1280×800, 1440×900, 1920×1080 : aucun débordement, aucun texte coupé ; mercredi (3 séances) et dimanche (2) distincts partout.
 - Contrôle de chevauchement : une alerte « numéro / jour » à partir de 768px, vérifiée sur capture — faux positif (la boîte de ligne de l'Anton est plus haute que ses lettres ; le numéro est nettement au-dessus du nom).
 - Point serré connu : à 1024px, « MERCREDI » est à 13px de son premier horaire.
+
+## Page Inscription (Sprint 10)
+- Mobile : chaque étape se lit seule — numéro, titre, texte, action. Tarifs empilés, documents en une colonne, boutons pleine largeur dont le libellé passe à la ligne.
+- À partir de 768px : numéro à gauche, contenu à droite ; documents et tarifs sur deux colonnes.
+- Vérifié à 375×667, 390×844, 430×932, 768×1024, 1024×768, 1280×800, 1440×900, 1920×1080 : aucun débordement, aucun texte coupé, cibles de 44px minimum.
+- Contrôle de chevauchement : aucune alerte.
