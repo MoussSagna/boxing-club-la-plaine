@@ -122,3 +122,8 @@ Sprint 1 : contrôle automatisé du contraste de tous les textes rendus sur `/`,
 - Aide-mémoire : liste statique ; les cases sont décoratives.
 - Contraste contrôlé sur les 99 textes de la page : aucun échec. 24 liens atteignables au clavier, focus visible.
 - Défilement : une ancre ne reprend plus la position de l'ancre précédente (correctif de `RootLayout`).
+
+## Coordonnées (sprint Coordonnées)
+- Téléphone et e-mail sont des liens natifs (`tel:`, `mailto:`), atteignables au clavier avec focus visible ; 44px de haut en mobile dans le pied de page.
+- Dans le pied de page, chaque lien est précédé de « Téléphone : » ou « E-mail : » pour les lecteurs d'écran.
+- Page Contact : liste de définitions (intitulé, valeur) ; le lien de carte est annoncé comme ouvrant une nouvelle fenêtre.

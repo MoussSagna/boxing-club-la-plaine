@@ -3,6 +3,7 @@ import { SectionEyebrow } from '@/components/SectionEyebrow'
 import { Accent, SectionTitle } from '@/components/SectionTitle'
 import { Button } from '@/components/ui/button'
 import { AppLink } from '@/components/ui/link'
+import { CONTACT, PHONE_HREF } from '@/data/contact'
 import { REGISTRATION } from '@/data/registration'
 import { useRowReveal } from '@/hooks/useRowReveal'
 import { MaskedLine } from '@/sections/courses/MaskedLines'
@@ -10,7 +11,7 @@ import { BigEmail } from '@/sections/registration/shared'
 
 const TITLE_ID = 'inscription-contact'
 
-/** Clôture : comment joindre le club. */
+/** Clôture : comment joindre le club (téléphone et e-mail). L'envoi du dossier reste par e-mail. */
 export function RegistrationContact() {
   const ref = useRowReveal<HTMLDivElement>()
   const { contact, email } = REGISTRATION
@@ -27,7 +28,14 @@ export function RegistrationContact() {
             <Accent>{contact.title.accent}</Accent>
           </MaskedLine>
         </SectionTitle>
-        <p data-row-fade>
+        <p data-row-fade className="flex flex-col items-start gap-4">
+          <a
+            href={PHONE_HREF}
+            className="display text-display-m whitespace-nowrap underline decoration-primary decoration-2 underline-offset-8 transition-colors duration-200 hover:decoration-foreground"
+          >
+            <span className="sr-only">Téléphone : </span>
+            {CONTACT.phone}
+          </a>
           <BigEmail email={email} />
         </p>
         <div data-row-fade className="flex">

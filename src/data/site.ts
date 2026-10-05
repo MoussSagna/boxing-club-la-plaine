@@ -1,5 +1,6 @@
 /*
  * Informations globales du site.
+ * Les coordonnées du club sont dans `src/data/contact.ts`.
  * Les valeurs name / description / url sont dupliquées en statique dans
  * index.html, public/sitemap.xml et public/robots.txt : les garder synchronisées.
  */
@@ -22,10 +23,4 @@ export const SITE = {
     light: '/assets/logo/logo-256.png',
     dark: '/assets/logo/logo-dark-512.png',
   },
-  // TODO : coordonnées réelles à fournir par le club (adresse, téléphone, e-mail, réseaux).
-  contact: {
-    address: null,
-    phone: null,
-    email: null,
-  } as { address: string | null; phone: string | null; email: string | null },
 } as const

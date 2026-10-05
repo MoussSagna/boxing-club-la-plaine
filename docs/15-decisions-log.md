@@ -657,3 +657,33 @@ Chaque décision doit contenir :
 ### Correctifs communs
 - `AppLink` : prise en charge des fichiers (PDF) ; sans cela le routeur les prenait pour des pages.
 - `RootLayout` : la clé de restauration du défilement tient compte de l'ancre.
+
+---
+
+## 2026-10-05 — Sprint Coordonnées : décisions
+
+### Source unique des coordonnées
+**Décision :** `src/data/contact.ts`. Le bloc `contact` vide de `site.ts` est supprimé ; la page Inscription lit son e-mail dans la nouvelle source.
+**Raison :** coordonnées officielles fournies par le club.
+**Impact :** les données structurées de `index.html` reprennent ces valeurs en dur (fichier statique).
+**Statut :** appliqué.
+
+### Lien de carte
+**Décision :** lien externe vers Google Maps, construit à partir de l'adresse. Aucune carte embarquée, aucune dépendance.
+**Raison :** consigne du client.
+**Statut :** appliqué ; service à changer sur demande.
+
+### Clôture de la page Inscription
+**Décision :** le titre « Écrivez au club. » devient « Contactez le club. », et le téléphone est ajouté au-dessus de l'e-mail.
+**Raison :** avec un numéro de téléphone, « Écrivez » ne convenait plus.
+**Impact :** retouche d'une page validée, limitée à ce bloc.
+**Statut :** à valider.
+
+### Menu mobile inchangé
+**Décision :** les coordonnées n'y sont pas ajoutées.
+**Raison :** non demandé ; le menu tient sans défilement tel quel.
+**Statut :** appliqué.
+
+### Mention « Aucun avis »
+**Décision :** non affichée ; aucun avis ni note sur le site ou dans les données structurées.
+**Statut :** appliqué.

@@ -32,7 +32,6 @@ export function MobileMenu({ id, open, onClose }: MobileMenuProps) {
   const dialogRef = useRef<HTMLDialogElement>(null)
   const timelineRef = useRef<gsap.core.Timeline | null>(null)
   const reducedMotion = useReducedMotion()
-  const { address, phone, email } = SITE.contact
 
   // La timeline est construite une fois, en pause ; elle est jouée ou inversée ensuite.
   useGSAP(
@@ -209,23 +208,8 @@ export function MobileMenu({ id, open, onClose }: MobileMenuProps) {
                 </AppLink>
               </li>
             ))}
-            {/* Coordonnées affichées dès qu'elles sont renseignées dans src/data/site.ts. */}
-            {phone && (
-              <li>
-                <AppLink href={`tel:${phone.replaceAll(' ', '')}`} variant="nav">
-                  {phone}
-                </AppLink>
-              </li>
-            )}
-            {email && (
-              <li>
-                <AppLink href={`mailto:${email}`} variant="nav">
-                  E-mail
-                </AppLink>
-              </li>
-            )}
           </ul>
-          <p className="micro text-muted-foreground">{address ?? SITE.location}</p>
+          <p className="micro text-muted-foreground">{SITE.location}</p>
         </div>
       </div>
     </dialog>

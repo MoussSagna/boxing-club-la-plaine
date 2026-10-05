@@ -300,3 +300,16 @@ Copies des fichiers du dossier local `download/`, renommées.
 - **Deux adresses e-mail** dans les informations reçues : `bclaplaine@gmail.com` et `boxingclubdelaplaine@gmail.com` (citée pour le cours d'essai). Le site n'utilise que la première, comme demandé.
 - **RIB** : le lien pointe vers le site actuel du club ; il cessera de fonctionner si ce site est fermé. Prévoir d'héberger le PDF avec le nouveau site.
 - Intitulés ajoutés par l'agent : « Quatre étapes, un dossier. », « Tout est prêt ? », « Une question ? / Écrivez au club. », et les trois repères du cours d'essai.
+
+## Coordonnées officielles (sprint Coordonnées)
+Fichier : `src/data/contact.ts` (`CONTACT`, `PHONE_HREF`, `EMAIL_HREF`, `MAP_HREF`). Source de vérité ; l'e-mail de la page Inscription en dépend.
+
+| Élément | Valeur |
+|---|---|
+| Nom | Boxing Club de la Plaine |
+| Type | Club de boxe |
+| Adresse | 13 Rue du Général Guillaumat, 75015 Paris, France |
+| Téléphone | 07 89 48 20 38 (`tel:+33789482038`) |
+| E-mail | bclaplaine@gmail.com |
+
+Ces valeurs sont aussi écrites en dur dans les données structurées de `index.html` (adresse, téléphone, e-mail) : à modifier aux deux endroits. Non renseignés, faute d'information : coordonnées GPS, horaires d'ouverture, avis, note.

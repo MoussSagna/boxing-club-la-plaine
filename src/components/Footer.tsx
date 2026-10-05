@@ -1,14 +1,17 @@
 import { Link } from 'react-router'
 import { Logo } from '@/components/Logo'
+import { CONTACT, CONTACT_CITY_LINE, EMAIL_HREF, PHONE_HREF } from '@/data/contact'
 import { CTA_NAV, MAIN_NAV, ROUTES, SECONDARY_NAV } from '@/data/navigation'
 import { SITE } from '@/data/site'
 
 const FOOTER_NAV = [...MAIN_NAV, CTA_NAV, ...SECONDARY_NAV]
 const CURRENT_YEAR = new Date().getFullYear()
 
+const CONTACT_LINK =
+  'inline-flex min-h-11 items-center underline-offset-4 hover:underline md:min-h-0 md:py-1'
+
 export function Footer() {
-  const { address, phone, email } = SITE.contact
-  const hasContact = Boolean(address || phone || email)
+  const [emailUser, emailDomain] = CONTACT.email.split('@')
 
   return (
     <footer data-theme="dark" className="border-t border-border">
@@ -38,17 +41,27 @@ export function Footer() {
 
         <div className="col-span-2 md:col-span-4 lg:col-span-3">
           <h2 className="label mb-4 text-muted-foreground">Le club</h2>
-          <address className="flex flex-col gap-2 not-italic">
-            <span>{SITE.name}</span>
-            <span>{SITE.location}</span>
-            {/* Coordonnées affichées dès qu'elles sont renseignées dans src/data/site.ts. */}
-            {hasContact && (
-              <>
-                {address && <span>{address}</span>}
-                {phone && <a href={`tel:${phone.replaceAll(' ', '')}`}>{phone}</a>}
-                {email && <a href={`mailto:${email}`}>{email}</a>}
-              </>
-            )}
+          <address className="flex flex-col items-start gap-3 not-italic md:gap-2">
+            <p className="font-medium">{CONTACT.clubName}</p>
+            <p>
+              {CONTACT.address}
+              <br />
+              {CONTACT_CITY_LINE}
+            </p>
+            <p className="flex flex-col items-start">
+              <a href={PHONE_HREF} className={`${CONTACT_LINK} whitespace-nowrap`}>
+                <span className="sr-only">Téléphone : </span>
+                {CONTACT.phone}
+              </a>
+              {/* Sur une colonne étroite, l'adresse se coupe proprement avant le « @ ». */}
+              <a href={EMAIL_HREF} className={CONTACT_LINK}>
+                <span className="sr-only">E-mail : </span>
+                <span>
+                  {emailUser}
+                  <wbr />@{emailDomain}
+                </span>
+              </a>
+            </p>
           </address>
         </div>
       </div>

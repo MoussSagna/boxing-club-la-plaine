@@ -398,3 +398,14 @@ Mots mis en évidence (LISIBLEMENT, SIGNEZ, UNIQUEMENT) : par la graisse, pas se
 ## Évolutions communes
 - `AppLink` reconnaît les fichiers servis par le site (PDF) : lien simple, nouvelle fenêtre, annoncé « PDF, nouvelle fenêtre ».
 - Navigation : l'onglet « Actualités » est retiré du header, du menu mobile, du pied de page et du sitemap. La route `/actualites` existe toujours.
+
+---
+
+# Coordonnées du club (sprint Coordonnées)
+Source unique : `src/data/contact.ts`.
+
+- **Pied de page** (toutes les pages), colonne « Le club » : nom, adresse sur deux lignes, téléphone et e-mail cliquables. Présentation en texte courant, sans bloc ni icône.
+- **Page Contact** : H1 « Nous / trouver. », puis trois lignes séparées par des filets — adresse, téléphone, e-mail —, chacune en Anton avec son action : « Voir sur la carte », « Appeler le club », « Envoyer un email ».
+- **Page Inscription**, clôture « Une question ? » : téléphone et e-mail en grand.
+- Carte : aucun composant embarqué ; un lien externe ouvre l'adresse dans un service de cartographie.
+- Menu mobile : inchangé (lien Contact et « Paris 15 »).

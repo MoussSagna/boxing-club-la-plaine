@@ -1,3 +1,4 @@
+import { CONTACT } from '@/data/contact'
 import { ROUTES } from '@/data/navigation'
 import type { RegistrationDocument, RegistrationPractice, TextPart } from '@/types'
 
@@ -12,8 +13,8 @@ import type { RegistrationDocument, RegistrationPractice, TextPart } from '@/typ
 const DOCUMENTS = '/assets/documents'
 
 export const REGISTRATION = {
-  /** Adresse du club pour le dossier et pour le cours d'essai. */
-  email: 'bclaplaine@gmail.com',
+  /** Adresse du club pour le dossier et pour le cours d'essai (source : `contact.ts`). */
+  email: CONTACT.email,
 
   links: {
     /** Espace licencié de la Fédération Française de Boxe (lien officiel). */
@@ -157,7 +158,7 @@ export const REGISTRATION = {
 
   contact: {
     eyebrow: 'Une question ?',
-    title: { lines: ['Écrivez'], accent: 'au club.' },
+    title: { lines: ['Contactez'], accent: 'le club.' },
     planning: { label: 'Voir le planning', href: ROUTES.planning },
   },
 }
