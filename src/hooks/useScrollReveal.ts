@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
-import { gsap, useGSAP } from '@/lib/gsap'
+import { gsap, revealTrigger, useGSAP } from '@/lib/gsap'
 import { DISTANCE, DURATION, EASE, SCROLL_START, STAGGER } from '@/lib/motion'
 
 type ScrollRevealOptions = {
@@ -45,7 +45,7 @@ export function useScrollReveal<T extends HTMLElement = HTMLDivElement>({
         delay,
         stagger: reducedMotion ? 0 : stagger,
         ease: EASE.out,
-        scrollTrigger: { trigger: element, start, once: true },
+        scrollTrigger: revealTrigger(element, start),
       })
     },
     { dependencies: [reducedMotion], revertOnUpdate: true },

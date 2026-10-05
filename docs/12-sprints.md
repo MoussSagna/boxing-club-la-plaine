@@ -162,35 +162,86 @@ Créer la section « Histoire du club » de la homepage, juste après le hero, a
 
 ---
 
-## Sprint 5 — Pratiques
-Status: TODO
+## Sprint 5 — Cours & Planning
+Status: COMPLETED (2026-10-05) — en local, en attente de validation
 
-- cards
-- grille
-- interactions
-- responsive
+### Objectif
+Créer la section de la homepage consacrée aux entraînements et au planning, avec les horaires officiels.
+
+Le plan initial séparait « Pratiques » (Sprint 5) et « Planning » (Sprint 6). Ils sont réunis ici pour la homepage. Restent à faire dans des sprints ultérieurs : les pages `/cours` et `/planning`.
+
+### Critères de validation
+- [x] toutes les séances fournies sont présentes (10 sur 10)
+- [x] aucun horaire inventé
+- [x] aucun coach inventé
+- [x] mercredi correctement traité (trois créneaux distincts)
+- [x] dimanche correctement traité (deux séances distinctes)
+- [x] BEA / BA conservés
+- [x] Technique / Cardio / Sparing / Préparation physique / Passage de gants conservés
+- [x] design éditorial
+- [x] pas de grille SaaS classique
+- [x] mobile lisible
+- [x] animation subtile
+- [x] reduced motion
+- [x] accessibilité
+- [x] design-system mis à jour
+- [x] lint OK
+- [x] build OK
+- [x] aucune régression des Sprints 0–4
+- [x] aucun commit Git
 
 ---
 
-## Sprint 6 — Planning
-Status: TODO
+## Sprint 6 — Coachs : les visages du club
+Status: COMPLETED (2026-10-05) — en local, en attente de validation
 
-- données planning
-- filtres
-- responsive
-- interactions
+- [x] page `/coachs` : introduction, six profils, sortie vers planning et inscription
+- [x] six coachs actuels ; Christophe Tiozzo retiré des coachs et du planning
+- [x] photos réelles uniquement ; état « Photo à venir » pour Jérôme Loubet
+- [x] six compositions différentes en desktop, lecture verticale en mobile
+- [x] reveals GSAP, léger déplacement photographique, reduced motion
+- [x] métadonnées de la page
+- [x] lint OK, build OK, console propre
+
+Reste à faire : pages `/cours` et `/planning` ; photo de Jérôme Loubet ; portraits plus grands.
+
+---
+
+## Sprint 7 — Les cours : trouver son rythme
+Status: COMPLETED (2026-10-05) — en local, en attente de validation
+
+- [x] page `/cours` : ouverture, introduction, six approches, bloc Esprit club, « Pour qui ? », passage vers le planning
+- [x] données dans `src/data/courses.ts`, coachs et planning réutilisés
+- [x] page typographique, sans image ni dépendance
+- [x] reveals GSAP, reduced motion
+- [x] métadonnées de la page
+- [x] lint OK, build OK, console propre
+
+Reste à faire : page `/planning`.
 
 ---
 
-## Sprint 7 — Coachs
-Status: TODO
+## Sprint 8 — Page Club
+Status: EN ATTENTE (décision du client)
 
-- portraits
-- bios
-- hover
-- responsive
+Mis en attente : des témoignages de membres seront récupérés pour enrichir la page. Ne pas développer `/club` avant.
 
 ---
+
+## Sprint 9 — Planning complet : trouver son créneau
+Status: COMPLETED (2026-10-05) — en local, en attente de validation
+
+- [x] page `/planning` : ouverture, feuille numérotée, repères, renvoi coachs, clôture
+- [x] 10 séances sur 10 conformes ; mercredi (3) et dimanche (2) distincts
+- [x] un seul système de planning (`ScheduleSheet` partagé avec l'accueil)
+- [x] aucun filtre, aucune logique de date, pas de légende BEA / BA
+- [x] reveals GSAP, survol, reduced motion
+- [x] métadonnées de la page
+- [x] lint OK, build OK, console propre
+
+---
+
+## Sprints suivants (plan initial, à renuméroter)
 
 ## Sprint 8 — Actualités
 Status: TODO

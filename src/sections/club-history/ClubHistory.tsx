@@ -1,8 +1,8 @@
 import { useRef } from 'react'
 import { Section } from '@/components/Section'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
-import { gsap, useGSAP } from '@/lib/gsap'
-import { DISTANCE, DURATION, EASE, SCROLL_START, STAGGER } from '@/lib/motion'
+import { gsap, revealTrigger, useGSAP } from '@/lib/gsap'
+import { DISTANCE, DURATION, EASE, STAGGER } from '@/lib/motion'
 import { HistoryAction } from '@/sections/club-history/HistoryAction'
 import { HistoryHeading } from '@/sections/club-history/HistoryHeading'
 import { HistoryMedia } from '@/sections/club-history/HistoryMedia'
@@ -37,7 +37,7 @@ export function ClubHistory({ content, theme = 'cream', id = 'histoire' }: ClubH
     () => {
       const section = ref.current
       if (!section) return
-      const once = (trigger: Element | null) => ({ trigger, start: SCROLL_START, once: true })
+      const once = revealTrigger
       const timeline = section.querySelector('[data-history-timeline]')
       const outro = section.querySelector('[data-history-outro]')
       const media = section.querySelector('[data-history-media]')

@@ -85,3 +85,31 @@ Sprint 1 : contrôle automatisé du contraste de tous les textes rendus sur `/`,
 ### Correctifs Sprint 4
 - Timeline : chaque entrée se lit « 13 mai 1991 — Création du club ». La date est un `time datetime="1991-05-13"` ; le tiret est présent dans le texte, masqué à l'écran.
 - Hero : « Depuis 1991 » et « Paris 15 — Club de boxe » sont deux paragraphes lus dans cet ordre, avant le `h1`. Contraste mesuré sur la photographie : 7,7:1 au pire cas (seuil 4,5:1).
+
+## Entraînements / Planning (Sprint 5)
+- `section` nommée par son `h2` ; liste ordonnée de sept jours, chacun avec un `h3` et une liste de créneaux nommée par ce `h3`.
+- Chaque créneau se lit comme une unité : « Mercredi, 18h à 20h, avec Christophe Tiozzo et Manuel Tavares, BEA / BA, Sparing / Préparation physique ». Les mots de liaison (« à », « avec », « et ») sont dans le texte, masqués à l'écran.
+- Horaires en texte réel, balisés par `time` (`datetime="18:00"`).
+- Les intitulés de colonnes (desktop) sont décoratifs et masqués aux lecteurs d'écran : le sens est porté par le texte de chaque créneau.
+- Contraste sur crème : texte noir 16,9:1, texte atténué 7,7:1, rouge 5,0:1.
+- Un seul élément interactif dans la section : le lien « Voir le planning complet », atteignable au clavier avec focus visible. Le survol des créneaux est purement décoratif.
+
+## Page Coachs (Sprint 6)
+- Un `h1`, puis un `article` par coach, nommé par son `h2`.
+- Chaque photographie a un texte alternatif décrivant la scène. L'état « Photo à venir » est annoncé « Photo de Jérôme Loubet à venir ».
+- Le style de cours est précédé de « Style de cours : » pour les lecteurs d'écran ; il n'est pas distingué par la seule couleur.
+- Contraste sur noir : texte 16,9:1, qualifications et légendes 8,4:1, style en rouge 3,4:1 (grand texte de 24 à 40px, seuil 3:1).
+- Aucun élément interactif dans les profils ; les liens de fin de page sont atteignables au clavier.
+
+## Page Cours (Sprint 7)
+- Un `h1`, cinq sections nommées par leur `h2`, approches et profils en `h3`. Les approches forment une liste ordonnée.
+- Contraste contrôlé sur les 95 textes de la page : aucun échec. Les phrases en rouge sur noir font au moins 24px.
+- Tous les liens sont atteignables au clavier dès le chargement, avec focus visible ; boutons de 44px de haut au minimum.
+- Aucune information portée par la seule couleur.
+
+## Page Planning (Sprint 9)
+- Un `h1` ; la feuille a un `h2` masqué « Les entraînements de la semaine », les jours sont en `h3` dans une liste ordonnée.
+- Les numéros 01 à 07 sont décoratifs (masqués aux lecteurs d'écran) : l'ordre est déjà porté par la liste.
+- Chaque séance se lit d'une traite, horaires en `time`.
+- Repères : la source du regroupement est écrite, pas suggérée par la couleur.
+- Contraste contrôlé sur les 127 textes de la page : aucun échec. Liens atteignables au clavier dès le chargement, 44px minimum.

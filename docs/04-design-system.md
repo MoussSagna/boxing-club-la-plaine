@@ -258,3 +258,117 @@ Deux lignes au-dessus du titre, secondaires par rapport à lui :
   PARIS 15 — CLUB DE BOXE
 ```
 « Depuis 1991 » porte le trait rouge ; les autres mentions sont alignées sur son texte. Même style (`label`), même couleur, même animation que les mentions d'origine.
+
+---
+
+# Entraînements / Planning (Sprint 5)
+Troisième section de la homepage (hero → histoire → entraînements). Elle répond à « Quand puis-je venir m'entraîner ? », composée comme une feuille de combat plutôt que comme un tableau.
+
+## Composition
+```text
+desktop (12 colonnes)
+— PLANNING
+À CHAQUE JOUR,
+SON ROUND.
+7 JOURS — 10 SÉANCES PAR SEMAINE
+
+JOUR          HORAIRE          ENCADREMENT          PRATIQUE
+▬▬───────────────────────────────────────────────────────────
+LUNDI         18H — 20H30      Laurent Vantheemst   BEA / BA
+                               Jean-Paul Guinvanna
+▬▬───────────────────────────────────────────────────────────
+MERCREDI      15H30 — 16H30    Manuel Tavares       6/11 ans
+              16H30 — 18H      Manuel Tavares       12/16 ans
+              18H — 20H        Christophe Tiozzo    BEA / BA
+                               Manuel Tavares       Sparing / Préparation physique
+…
+Voir le planning complet →
+```
+- Fond crème, texte noir. Un filet plein en tête de section la sépare de la section histoire, crème elle aussi.
+- Jour : colonnes 1 à 4, en Anton (`text-display-l`). Créneaux : colonnes 5 à 12, sur trois sous-colonnes (horaire, encadrement, pratique).
+- Un filet fin par jour, avec une amorce rouge. Un filet plus léger entre deux créneaux d'un même jour.
+- La hauteur d'un jour suit son nombre de créneaux : le mercredi (trois) est le bloc le plus haut, le dimanche (deux) vient ensuite.
+- Horaires en Anton (`text-heading`), au format « 18h — 20h30 ».
+- Pratique : disciplines ou tranche d'âge en gras, contenu de la séance dessous en atténué.
+- Ni carte, ni fond par séance, ni radius, ni ombre, ni image.
+
+## Mobile et tablet
+- Mobile : lecture verticale — le jour, puis chaque créneau empilé (horaire, encadrants, pratique). Pas de navigation par jour : dix créneaux se parcourent d'un geste.
+- Tablet (768) : le jour au-dessus, les créneaux sur trois colonnes.
+
+## Rouge
+Amorce des filets, ligne accentuée du titre, survol d'un créneau. Jamais en aplat sur une séance.
+
+Le planning est statique : aucun jour n'est mis en avant automatiquement.
+
+## Survol (desktop)
+L'horaire passe au rouge, un trait rouge s'avance à gauche, le créneau glisse de 4px. Pas de zoom, pas de carte flottante, pas d'infobulle.
+
+---
+
+# Page Coachs (Sprint 6)
+« Les visages du club ». Page sombre, un coach après l'autre, chacun dans sa propre composition.
+
+## Structure
+1. **Introduction** : sur-titre « Les visages du club », H1 « Ceux qui font / vivre la salle. », courte phrase à droite.
+2. **Six profils**, séparés par un filet : numéro et trait rouge, nom en Anton sur deux lignes, photo, qualifications, style de cours en rouge, description.
+3. **Sortie** (fond crème) : rappel du planning, CTA Inscription, lien vers le planning.
+
+## Compositions desktop
+| # | Coach | Composition |
+|---|---|---|
+| 01 | Laurent Vantheemst | grande image à gauche (col. 1–5), texte à droite |
+| 02 | Paul Marius | texte à gauche, grande image à droite (col. 8–12) |
+| 03 | Manuel Tavares | image décalée d'une colonne (col. 2–6), texte resserré |
+| 04 | Matthias Hourdé | image plus étroite en 3/4 (col. 2–5), texte à droite |
+| 05 | Jérôme Loubet | texte à gauche, état « Photo à venir » à droite |
+| 06 | Jean-Paul Guinvanna | grande photo en situation à gauche (col. 1–5), texte à droite |
+
+Sous 1024px, tous les profils se lisent dans le même ordre : numéro et nom, photo, informations. Pas de carrousel. Ni carte, ni avatar rond, ni ombre.
+
+## Photographies
+- Photos réelles uniquement, fournies par le client. Seul traitement : passage en noir et blanc (filtre CSS), pour unifier des sources différentes. Aucune retouche des visages, aucune image générée.
+- Originaux : `public/assets/coach/` (non modifiés). Fichiers servis : `public/assets/images/coaches/` (AVIF + JPEG).
+- Les portraits de Laurent, Paul, Manuel et Matthias font environ 450 × 650px : ils sont agrandis en desktop. Des versions plus grandes sont à demander.
+
+## État « Photo à venir »
+`CoachMedia` sans photographie : cadre au même ratio, fond noir, grain, initiales en très grand et très atténuées, trait rouge, mention « Photo à venir ». Annoncé « Photo de Jérôme Loubet à venir » aux lecteurs d'écran. Ajouter la photo dans `src/data/coaches.ts` suffit à le remplacer, sans toucher à la mise en page.
+
+---
+
+# Page Cours (Sprint 7)
+« Qu'est-ce que je vais faire ? Quel entraînement me correspond ? » Page entièrement typographique, sans image, qui alterne fonds noir et crème.
+
+| # | Section | Fond | Contenu |
+|---|---|---|---|
+| 1 | Ouverture | noir | « Les cours », H1 « Apprendre. / Travailler. / Combattre. », phrase, liens Planning et Coachs |
+| 2 | Introduction | crème | « Pas une seule / façon de boxer. », deux phrases en retrait à droite |
+| 3 | Approches | noir | six lignes numérotées : titre en très grand, phrase en rouge, ce qu'on y travaille ou description, coachs associés |
+| 4 | Esprit club | crème | bloc à part pour l'ambiance des séances de Paul Marius |
+| 5 | Pour qui ? | noir | quatre questions en très grand, chacune avec un profil et une phrase |
+| 6 | Vers le planning | crème | « 7 jours. / 10 séances. / Une salle. », liens Planning et Coachs |
+
+- Approches : numéro en colonne 1, titre décalé d'une colonne une ligne sur deux, détail en colonnes 9 à 12. Un filet par ligne avec une amorce rouge, comme au planning. Ni carte ni fond.
+- L'ouverture tient dans un écran, y compris en 1280 × 720 : son titre est borné par la hauteur (`16svh`).
+- Les deux nombres de la dernière section sont calculés à partir du planning.
+
+---
+
+# Page Planning (Sprint 9)
+La section de l'accueil est un aperçu ; `/planning` est la page pratique. Même feuille, mêmes données, même composant.
+
+| # | Section | Fond | Contenu |
+|---|---|---|---|
+| 1 | Ouverture | noir | « Le planning », H1 « À chaque jour, / son round. » (titre partagé avec l'accueil), « 7 jours. 10 séances. À vous de choisir votre rythme. », liens Cours et Coachs |
+| 2 | La feuille | crème | les sept jours numérotés 01 à 07, chacun avec ses séances |
+| 3 | Repères | noir | « Quel rythme vous correspond ? » : cinq repères de lecture et les séances correspondantes |
+| 4 | Coachs | crème | « Chaque séance a son approche. », lien vers `/coachs` |
+| 5 | Clôture | noir | « Votre créneau / est là. », CTA Inscription, lien Cours |
+
+- L'ouverture est compacte (environ 470 à 630px) : la feuille s'annonce dès le premier écran.
+- Feuille : `ScheduleSheet`, partagée avec l'accueil ; la page ajoute seulement la numérotation des jours.
+- Aucun filtre, onglet, tableau, menu déroulant ni calendrier : une page statique. Aucune logique de date ; pas de « Aujourd'hui ».
+- Pas de légende BEA / BA (définition officielle non fournie). « Sparing » conservé tel quel.
+
+## Repères de lecture
+Technique, Cardio, Préparation physique, Assaut, Jeunes. Ce ne sont ni des filtres ni des catégories officielles. Chaque repère affiche la mention du planning sur laquelle il s'appuie, puis les séances concernées (« Mardi 18h »), calculées à partir des données.

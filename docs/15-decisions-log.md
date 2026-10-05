@@ -420,3 +420,194 @@ Chaque décision doit contenir :
 - À 1024px, « Création du club » passe sur deux lignes.
 - Aucune nouvelle animation : la date suit celle de l'année, la mention suit celle des mentions du hero.
 **Statut :** appliqué, validé par le client pour le principe.
+
+---
+
+## 2026-10-05 — Sprint 5 : décisions
+
+### Planning officiel intégré
+**Décision :** les dix séances communiquées par le club sont reprises telles quelles dans `src/data/schedule.ts`.
+**Raison :** informations officielles ; elles remplacent la liste vide du Sprint 0.
+**Impact :** contrôle automatisé : les dix séances affichées sont identiques à la liste fournie.
+**Statut :** appliqué.
+
+### Encadrants référencés par identifiant
+**Décision :** une séance porte des identifiants d'encadrants ; le nom vient de `coaches.ts`.
+**Raison :** une seule orthographe par personne dans tout le site.
+**Impact :** « Manuel Tavares » partout, alors que les données reçues contiennent aussi « Tavarès ». À confirmer par le club.
+**Statut :** appliqué, orthographe à confirmer.
+
+### Appellations conservées
+**Décision :** BEA, BA, Technique, Cardio, Sparing, Préparation physique, Passage de gants sont affichés tels quels.
+**Raison :** consigne du client. « Sparing » n'est pas corrigé en « sparring ».
+**Statut :** appliqué.
+
+### Rien n'est déduit pour les séances jeunes
+**Décision :** les deux séances du mercredi après-midi affichent leur tranche d'âge, sans discipline.
+**Raison :** aucune discipline n'a été communiquée pour elles.
+**Statut :** appliqué.
+
+### Titre de la section
+**Décision :** « À chaque jour, son round. », seconde ligne en rouge.
+**Raison :** proposition graphique du client, choisie parce qu'elle annonce la lecture jour par jour. Marquée PROVISOIRE dans les données ; alternative factuelle : « Les entraînements ».
+**Statut :** à valider.
+
+### Feuille plutôt que cartes
+**Décision :** une liste de sept jours, le jour en très grand à gauche, ses créneaux à droite sur trois colonnes, un filet par jour.
+**Raison :** direction « feuille de combat » ; pas de sept cartes identiques ; la hauteur de chaque jour suit son contenu.
+**Statut :** appliqué.
+
+### Pas de navigation par jour en mobile
+**Décision :** liste verticale simple.
+**Raison :** dix créneaux se parcourent en un geste ; un filtre ajouterait une interaction sans gain de lisibilité.
+**Statut :** appliqué.
+
+### Repère chiffré calculé
+**Décision :** « 7 jours — 10 séances par semaine » sous le titre.
+**Raison :** réponse immédiate à « quand puis-je venir ? ». Les deux nombres sont calculés à partir des données, pas saisis.
+**Statut :** appliqué.
+
+### Jour en cours
+**Décision :** le jour de la semaine du visiteur est signalé par un point rouge et la mention « Aujourd'hui ».
+**Raison :** « état actif » en rouge ; aide à trouver la prochaine séance.
+**Impact :** non demandé explicitement ; à retirer si le client ne le souhaite pas.
+**Statut :** à valider.
+
+### Signification de BEA et BA non affichée
+**Décision :** pas de légende.
+**Raison :** aucun libellé officiel n'a été communiqué pour ces sigles.
+**Impact :** un visiteur débutant peut ne pas les comprendre. À ajouter quand le club aura fourni la formulation.
+**Statut :** en attente.
+
+### Image du planning non utilisée
+**Décision :** aucune image dans la section.
+**Raison :** l'image jointe aux informations vient d'une URL externe dont la licence n'est pas confirmée.
+**Statut :** appliqué.
+
+### Correctif commun : fin de `once: true`
+**Décision :** tous les reveals au scroll passent par `revealTrigger()` au lieu de `once: true`.
+**Raison :** défaut trouvé à l'audit — en revenant sur l'accueil déjà défilée loin (précédent), la page plantait : `once: true` détruisait des déclencheurs pendant que ScrollTrigger recalculait les autres.
+**Impact :** `ClubHistory`, `ImageReveal` et `useScrollReveal` sont modifiés sur ce seul point. Le défaut était latent depuis le Sprint 4 et s'est révélé avec le nombre de déclencheurs du planning.
+**Statut :** appliqué.
+
+### Bibliothèques dans leurs propres fichiers
+**Décision :** au build, React et GSAP sont séparés du code du site (`vite.config.ts`).
+**Raison :** avec la section planning, le fichier unique dépassait 500 Ko et le build émettait un avertissement. Le poids total ne change pas (509 Ko, 169 Ko gzip), mais les bibliothèques restent en cache chez le visiteur quand seul le code du site change.
+**Impact :** code du site 80 Ko (25 Ko gzip), GSAP 114 Ko, React et routeur 314 Ko. Vérifié sur le build de production.
+**Statut :** appliqué.
+
+### Correctifs finaux du Sprint 5 (2026-10-05)
+**Décision :**
+- Le marquage automatique du jour en cours (« Aujourd'hui », point rouge) est retiré. Le planning reste statique et éditorial.
+- Le titre « À chaque jour, son round. » est validé comme titre éditorial du site. Il n'est pas un slogan officiel du club.
+**Raison :** arbitrages du client sur les deux points laissés à valider.
+**Impact :** la logique de date (`getToday`) est supprimée ; plus aucun rendu ne dépend de l'heure du visiteur. Données, mise en page et animations inchangées.
+**Statut :** validé.
+
+---
+
+## 2026-10-05 — Sprint 6 : décisions
+
+### Christophe Tiozzo retiré des coachs actuels et du planning
+**Décision :** sa fiche passe en `status: 'former'` ; il n'apparaît plus sur `/coachs` ni sur le créneau du mercredi 18h — 20h, désormais encadré par Manuel Tavares seul.
+**Raison :** information du client : il n'est plus présent dans la salle.
+**Impact :** c'est la seule modification des données du planning du Sprint 5. À confirmer : le créneau est-il bien assuré par Manuel Tavares seul ? L'intro « Six coachs » reste exacte.
+**Statut :** appliqué, créneau à confirmer.
+
+### Un profil par coach, six compositions
+**Décision :** pas de grille de cartes ; chaque coach a sa composition desktop, attribuée par `CoachesList`.
+**Raison :** direction éditoriale demandée.
+**Statut :** appliqué.
+
+### Photos en noir et blanc par filtre
+**Décision :** les photos couleur (Paul, Jean-Paul) sont affichées en noir et blanc par un filtre CSS ; les fichiers ne sont pas retouchés.
+**Raison :** unifier six sources très différentes et rester cohérent avec le hero.
+**Impact :** réversible en une ligne si le client préfère la couleur.
+**Statut :** à valider.
+
+### Originaux conservés, copies servies
+**Décision :** `public/assets/coach/` n'est pas modifié. Les fichiers affichés sont des copies renommées dans `public/assets/images/coaches/`.
+**Raison :** consigne du client ; les originaux n'ont pas d'extension et deux sont des PNG de 2 Mo.
+**Impact :** les originaux restent copiés dans le build (4,3 Mo) sans être chargés. À déplacer dans `sources/` si le client l'accepte.
+**Statut :** à valider.
+
+### AVIF aux dimensions impaires
+**Décision :** la photo en situation de Jean-Paul est rognée d'un pixel (928 × 1692).
+**Raison :** son AVIF en 929 × 1693 s'affichait entièrement noir.
+**Statut :** appliqué.
+
+### Page `/design-system` non étendue
+**Décision :** pas de bloc Coachs ajouté.
+**Raison :** non demandé pour ce sprint ; la page `/coachs` fait référence.
+**Statut :** à faire si souhaité.
+
+### Jean-Paul Guinvanna : une seule photo
+**Décision :** seule la photo en situation (`jp1`) est utilisée ; le portrait en extérieur (`jp2`) est retiré de la page.
+**Raison :** demande du client.
+**Impact :** son profil reprend une composition à une image. La composition à deux photos reste disponible dans le code si un coach en a deux. L'original `jp2.png` n'est pas supprimé.
+**Statut :** appliqué.
+
+---
+
+## 2026-10-05 — Sprint 7 : décisions
+
+### Page Cours typographique
+**Décision :** aucune image sur `/cours`.
+**Raison :** le brief le permet ; les photos disponibles sont déjà utilisées sur l'accueil et sur `/coachs`.
+**Statut :** appliqué.
+
+### Coachs associés en texte, un seul lien
+**Décision :** chaque approche cite ses coachs en texte ; un seul lien « Rencontrer les coachs » clôt la séquence.
+**Raison :** six liens identiques vers la même page alourdiraient la navigation au clavier.
+**Statut :** appliqué.
+
+### Ordre des questions « Pour qui ? »
+**Décision :** commencer, progresser, reprendre, boxer.
+**Raison :** associer chaque question au profil qui lui correspond (« Tu veux progresser ? » avec « Progresser »). Le brief listait « Tu reprends ? » en deuxième.
+**Statut :** à valider.
+
+### Note sur les assauts
+**Décision :** « Les assauts ne concernent pas tous les pratiquants. » sous l'approche 03.
+**Raison :** consigne de ne pas les présenter comme obligatoires, sans inventer de règle d'accès.
+**Statut :** à valider.
+
+### `src/data/practices.ts` conservé mais inutilisé
+**Décision :** le fichier du Sprint 0 (quatre pratiques aux descriptions `TODO`) n'est ni utilisé ni supprimé.
+**Raison :** la page est construite sur les approches fournies ; la suppression n'a pas été demandée.
+**Statut :** à nettoyer sur décision du client.
+
+---
+
+## 2026-10-05 — Sprint 9 : décisions
+
+### Sprint 8 (/club) en attente
+**Décision :** la page `/club` n'est pas développée.
+**Raison :** le client attend des témoignages de membres.
+**Statut :** en attente.
+
+### Un seul planning : `ScheduleSheet`
+**Décision :** la feuille et son reveal sont extraits dans `ScheduleSheet`, utilisé par l'accueil et par `/planning`.
+**Raison :** ne pas avoir deux systèmes de planning.
+**Impact :** `TrainingSchedule` (accueil, validé) est modifié pour déléguer la feuille ; rendu et animation vérifiés identiques (10 séances, mêmes textes, pas de numéro sur l'accueil).
+**Statut :** appliqué.
+
+### Jours numérotés sur la page seulement
+**Décision :** 01 à 07 au-dessus du nom du jour, sur `/planning` uniquement.
+**Raison :** demandé pour la page ; l'aperçu de l'accueil reste tel que validé.
+**Statut :** appliqué.
+
+### Ouverture compacte, CTA en contour
+**Décision :** l'ouverture n'occupe pas tout l'écran, et « Voir les cours » est un bouton en contour.
+**Raison :** page pratique : la feuille doit s'annoncer tout de suite ; le seul bouton rouge de la page est « Inscription », en clôture.
+**Statut :** à valider.
+
+### Repères calculés, source affichée
+**Décision :** chaque repère liste ses séances d'après les mentions exactes du planning et écrit cette mention.
+**Raison :** aider à lire le planning sans créer de filtres ni de catégories officielles.
+**Impact :** « Assaut » regroupe « Sparing » et « Passage de gants », ce que le planning ne dit pas lui-même. À valider par le club.
+**Statut :** à valider.
+
+### Format des horaires
+**Décision :** « 18h — 20h30 », comme sur l'accueil (le brief montrait aussi « 18:00 — 20:30 » à titre conceptuel).
+**Raison :** conserver le format validé au Sprint 5.
+**Statut :** appliqué.

@@ -1,8 +1,8 @@
 import { useRef } from 'react'
 import { MediaFrame, type MediaFrameProps } from '@/components/MediaFrame'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
-import { gsap, useGSAP } from '@/lib/gsap'
-import { DURATION, EASE, SCROLL_START } from '@/lib/motion'
+import { gsap, revealTrigger, useGSAP } from '@/lib/gsap'
+import { DURATION, EASE } from '@/lib/motion'
 
 type ImageRevealProps = Omit<MediaFrameProps, 'ref' | 'imageRef'> & {
   /**
@@ -26,7 +26,7 @@ export function ImageReveal({ reveal = 'clip', ...props }: ImageRevealProps) {
       const frame = frameRef.current
       if (!frame || reveal === 'none') return
 
-      const scrollTrigger = { trigger: frame, start: SCROLL_START, once: true }
+      const scrollTrigger = revealTrigger(frame)
 
       if (reveal === 'fade' || reducedMotion) {
         gsap.from(frame, {

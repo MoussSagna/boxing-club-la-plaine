@@ -74,3 +74,26 @@ Sprint 1 : aucun débordement horizontal et aucun élément hors cadre sur `/`, 
 - Tablet (768) : même ordre ; dans la timeline, année et événement côte à côte.
 - Desktop (≥ 1024) : texte sur 4 colonnes à gauche, timeline sur 7 colonnes à droite, phrase sur 10 colonnes.
 - Vérifié à 375×667, 390×844, 430×932, 768×1024, 1024×768, 1280×800, 1440×900, 1920×1080 : aucun débordement, aucune collision, ordre de lecture identique partout.
+
+## Entraînements / Planning (Sprint 5)
+- Mobile (< 768) : jour puis créneaux empilés.
+- Tablet (768 à 1023) : jour au-dessus, créneaux sur trois colonnes.
+- Desktop (≥ 1024) : jour à gauche (4 colonnes), créneaux à droite (8 colonnes).
+- Vérifié à 375×667, 390×844, 430×932, 768×1024, 1024×768, 1280×800, 1440×900, 1920×1080 : aucun débordement, aucun chevauchement, aucun texte coupé.
+
+## Page Coachs (Sprint 6)
+- < 1024px : lecture verticale, même ordre pour tous (nom, photo, informations). Jean-Paul : portrait puis photo en situation.
+- ≥ 1024px : six compositions différentes sur la grille 12 colonnes.
+- Vérifié à 375×667, 390×844, 430×932, 768×1024, 1024×768, 1280×800, 1440×900, 1920×1080 : aucun débordement, aucun chevauchement, aucun nom coupé, aucune image déformée.
+
+## Page Cours (Sprint 7)
+- Mobile : lecture verticale ; chaque approche se lit numéro, titre, phrase, détail, coachs.
+- Tablet : numéro à gauche, contenu en une colonne.
+- Desktop : titre à gauche, détail à droite.
+- Vérifié à 375×667, 390×844, 430×932, 768×1024, 1024×768, 1280×720, 1280×800, 1440×900, 1920×1080 : aucun débordement, aucun titre coupé ; l'ouverture tient dans l'écran et ses liens sont visibles sans défiler.
+
+## Page Planning (Sprint 9)
+- Même comportement que la feuille de l'accueil : jour puis séances empilées en mobile, séances sur trois colonnes à 768px, jour à gauche à partir de 1024px.
+- Vérifié à 375×667, 390×844, 430×932, 768×1024, 1024×768, 1280×720, 1280×800, 1440×900, 1920×1080 : aucun débordement, aucun texte coupé ; mercredi (3 séances) et dimanche (2) distincts partout.
+- Contrôle de chevauchement : une alerte « numéro / jour » à partir de 768px, vérifiée sur capture — faux positif (la boîte de ligne de l'Anton est plus haute que ses lettres ; le numéro est nettement au-dessus du nom).
+- Point serré connu : à 1024px, « MERCREDI » est à 13px de son premier horaire.

@@ -134,3 +134,60 @@ Dossier `src/sections/club-history/`.
 Réutilisés : `Section`, `SectionEyebrow`, `SectionTitle`, `Accent`, `Button`, `AppLink`, `MediaFrame`, `useReducedMotion`. Aucune nouvelle primitive.
 
 Supprimé : l'aperçu temporaire « Plus qu'une salle. Une histoire. » posé au Sprint 0 sur la homepage.
+
+## Sprint 5 — Entraînements / Planning
+
+Dossier `src/sections/schedule/`.
+
+| Composant | Rôle |
+|---|---|
+| `TrainingSchedule` | Section, repère chiffré, reveals au scroll |
+| `ScheduleHeading` | Sur-titre, titre monumental, repère chiffré |
+| `ScheduleDayRow` | Un jour : nom en très grand et liste de ses créneaux |
+| `ScheduleSession` | Un créneau : horaire, encadrants, pratique |
+
+Réutilisés : `Section`, `SectionEyebrow`, `SectionTitle`, `Accent`, `Button`, `AppLink`, `useReducedMotion`. Aucune nouvelle primitive, aucune dépendance.
+
+Utilitaires : `src/lib/schedule.ts` (`formatTime`), `getCoachName` dans `src/data/coaches.ts`, `revealTrigger` dans `src/lib/gsap.ts`.
+
+`ScheduleItem` (prévu à l'origine) est remplacé par `ScheduleSession`.
+
+## Sprint 6 — Page Coachs
+
+Dossier `src/sections/coaches/`.
+
+| Composant | Rôle |
+|---|---|
+| `CoachesIntro` | En-tête de page : sur-titre, H1, introduction |
+| `CoachesList` | Enchaîne les profils et leur attribue une composition |
+| `CoachProfile` | Un profil : composition, reveal au scroll |
+| `CoachHeading` | Numéro, trait rouge, nom |
+| `CoachDetails` | Qualifications, style de cours, description |
+| `CoachMedia` | Photographie réelle, ou état « Photo à venir » |
+
+Réutilisés : `Section`, `SectionEyebrow`, `SectionTitle`, `SectionHeader`, `Accent`, `Button`, `AppLink`, `ParallaxImage`, `MediaFrame`, `GrainOverlay`. Aucune dépendance ajoutée.
+
+`CoachCard` (prévu à l'origine) est remplacé par `CoachProfile`. `PagePlaceholder` n'est plus utilisé par `/coachs`.
+
+## Sprint 7 — Page Cours
+
+Dossier `src/sections/courses/` : `CoursesHero`, `CoursesIntro`, `CoursesApproaches`, `ApproachItem`, `CoursesSpotlight`, `CoursesProfiles`, `CoursesOutro`, `MaskedLine`.
+
+Hook : `src/hooks/useRowReveal.ts`. Données : `src/data/courses.ts`. Réutilisés : `Section`, `SectionEyebrow`, `SectionTitle`, `Accent`, `Button`, `AppLink`, `getCoachName`, `scheduleDays`. Aucune dépendance, aucune image.
+
+`PracticeCard` et `src/data/practices.ts` (prévus au Sprint 0) ne sont pas utilisés par cette page.
+
+## Sprint 9 — Page Planning
+
+Dans `src/sections/schedule/` :
+
+| Composant | Rôle |
+|---|---|
+| `ScheduleSheet` | **nouveau** — la feuille (intitulés de colonnes, jours, reveal). Utilisée par l'accueil et par `/planning` |
+| `ScheduleDayRow` | prop `number` ajoutée (numérotation des jours) |
+| `TrainingSchedule` | allégé : délègue la feuille à `ScheduleSheet` |
+| `PlanningHero` | ouverture de la page |
+| `PlanningMarkers` | repères de lecture, calculés à partir du planning |
+| `PlanningCallout` | bloc d'appel (renvoi coachs, clôture) |
+
+Données : `src/data/planning.ts` (textes de la page uniquement). Les horaires restent dans `src/data/schedule.ts`, seule source. `MaskedLine` et `useRowReveal` sont repris de la page Cours.

@@ -14,11 +14,13 @@ import { AppLink } from '@/components/ui/link'
 import { CLUB_HISTORY } from '@/data/history'
 import { CTA_NAV, MAIN_NAV, ROUTES } from '@/data/navigation'
 import { practices } from '@/data/practices'
+import { scheduleDays } from '@/data/schedule'
 import { PLACEHOLDER_IMAGE } from '@/data/site'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { useScrollReveal } from '@/hooks/useScrollReveal'
 import { cn } from '@/lib/utils'
 import { ClubHistory } from '@/sections/club-history/ClubHistory'
+import { ScheduleDayRow } from '@/sections/schedule/ScheduleDayRow'
 
 /*
  * PAGE INTERNE — référence visuelle du design system.
@@ -391,6 +393,45 @@ function ClubHistoryShowcase() {
   )
 }
 
+/** Les trois cas de figure du planning : un, trois et deux créneaux. */
+const SCHEDULE_SAMPLES = scheduleDays.filter((day) =>
+  ['monday', 'wednesday', 'sunday'].includes(day.id),
+)
+
+function ScheduleShowcase() {
+  return (
+    <div className="grid items-start gap-10 lg:grid-cols-[390px_1fr]">
+      <PagePreview label="Planning mobile" width={390} height={844} anchor="entrainements" />
+      <ul className="flex max-w-prose list-disc flex-col gap-2 pl-5 text-small text-muted-foreground">
+        <li>
+          Structure : <code>TrainingSchedule</code> = <code>ScheduleHeading</code> +{' '}
+          <code>ScheduleDayRow</code> (un par jour) + <code>ScheduleSession</code> (un par
+          créneau). Les données viennent de <code>src/data/schedule.ts</code> ; les noms des
+          encadrants de <code>src/data/coaches.ts</code>.
+        </li>
+        <li>
+          Desktop : une feuille — le jour en très grand à gauche, ses créneaux à droite sur trois
+          colonnes (horaire, encadrement, pratique). Les trois cas de figure sont affichés en
+          vraie grandeur juste en dessous : lundi (un créneau), mercredi (trois), dimanche (deux).
+        </li>
+        <li>Mobile : le jour, puis ses créneaux empilés — horaire, encadrants, pratique.</li>
+        <li>
+          Survol d’un créneau (desktop) : l’horaire passe au rouge, un trait rouge s’avance, le
+          créneau glisse de 4 px.
+        </li>
+        <li>
+          Animation : reveal au scroll, jour par jour, joué une fois — le filet se trace, le nom
+          du jour monte, les créneaux apparaissent. Les exemples ci-dessous sont statiques.
+        </li>
+        <li>
+          Reduced motion : simples fondus de 0,3 s, aucun déplacement, pas de glissement au
+          survol.
+        </li>
+      </ul>
+    </div>
+  )
+}
+
 function ThemeShowcase() {
   return (
     <div className="flex flex-col gap-10">
@@ -706,6 +747,19 @@ export function DesignSystemPage() {
       </Section>
       <ClubHistory content={CLUB_HISTORY} theme="cream" id="apercu-histoire-cream" />
       <ClubHistory content={CLUB_HISTORY} theme="dark" id="apercu-histoire-dark" />
+
+      <Section spacing="medium" className="border-t border-border">
+        <Block title="Schedule / Training — mobile, desktop, un / trois / deux créneaux, survol">
+          <ScheduleShowcase />
+        </Block>
+      </Section>
+      <Section theme="cream" spacing="medium">
+        <ol>
+          {SCHEDULE_SAMPLES.map((day) => (
+            <ScheduleDayRow key={day.id} day={day} />
+          ))}
+        </ol>
+      </Section>
 
       <Section theme="dark" spacing="large" className="border-t border-border">
         <Block title='Thème — <Section theme="dark">'>

@@ -153,3 +153,117 @@ type Coach = {
 |---|---|---|
 | Repère historique (`since`) | Depuis 1991 | officiel |
 | Mentions (`meta`) | Paris 15 — Club de boxe | provisoire, inchangé |
+
+## Planning des entraînements (Sprint 5) — données officielles
+Source : informations communiquées par le club le 2026-10-05. Fichier : `src/data/schedule.ts` (`scheduleDays`, `TRAINING_SCHEDULE`). Ces types remplacent `ScheduleItem`.
+
+```ts
+type DayId = 'monday' | 'tuesday' | 'wednesday' | 'thursday' | 'friday' | 'saturday' | 'sunday';
+
+type TrainingSession = {
+  id: string;
+  day: DayId;
+  start: string;        // 'HH:MM'
+  end: string;          // 'HH:MM'
+  ageRange?: string;    // ex. '6/11 ans'
+  coachIds: string[];   // identifiants de src/data/coaches.ts
+  disciplines: string[]; // BEA, BA
+  tags?: string[];      // Technique, Cardio, Sparing, Préparation physique, Passage de gants
+};
+
+type ScheduleDay = { id: DayId; label: string; short: string; sessions: TrainingSession[] };
+```
+
+| Jour | Horaire | Encadrants | Pratique |
+|---|---|---|---|
+| Lundi | 18h — 20h30 | Laurent Vantheemst, Jean-Paul Guinvanna | BEA / BA |
+| Mardi | 18h — 19h30 | Paul Marius | BEA / BA — Technique / Cardio |
+| Mercredi | 15h30 — 16h30 | Manuel Tavares | 6/11 ans |
+| Mercredi | 16h30 — 18h | Manuel Tavares | 12/16 ans |
+| Mercredi | 18h — 20h | Manuel Tavares (Christophe Tiozzo retiré au Sprint 6) | BEA / BA — Sparing / Préparation physique |
+| Jeudi | 18h — 19h30 | Matthias Hourdé | BEA / BA — Technique / Cardio / Sparing |
+| Vendredi | 18h — 20h | Paul Marius | BEA / BA — Technique / Cardio |
+| Samedi | 12h — 13h | Matthias Hourdé | BEA / BA |
+| Dimanche | 10h — 12h | Manuel Tavares | BEA — Technique / Sparing |
+| Dimanche | 12h — 14h | Manuel Tavares | BA — Passage de gants |
+
+Règles appliquées :
+- Les encadrants sont référencés par identifiant : leur nom n'est écrit qu'une fois, dans `coaches.ts`.
+- Appellations conservées telles quelles, dont « Sparing ».
+- Les deux séances du mercredi après-midi n'ont qu'une tranche d'âge : aucune discipline n'est déduite.
+- Titre de la section « À chaque jour, son round. » : validé par le client comme titre éditorial du site. Ce n'est pas un slogan officiel du club et il ne doit pas être présenté comme tel.
+
+Points à confirmer par le club :
+- « Manuel Tavarès » ou « Manuel Tavares » : les deux formes figurent dans les données reçues. Le site utilise « Tavares », la forme déjà enregistrée.
+- « Sparing » : orthographe reçue, conservée (la graphie usuelle est « sparring »).
+- Signification de BEA et BA : non affichée, faute de libellé officiel.
+
+## Coachs (Sprint 6)
+Fichier : `src/data/coaches.ts` (`coaches`, `currentCoaches`, `COACHES_PAGE`).
+
+```ts
+type CoachPhoto = { kind: 'portrait' | 'action'; src: string; srcSet?: string; sources?: ...; width: number; height: number; alt: string; focalPoint?: { x: number; y: number } };
+
+type Coach = {
+  id: string;
+  name: string;
+  status: 'current' | 'former';
+  qualifications: string[];
+  achievements?: string[];
+  style?: { label: string; description: string };
+  photos: CoachPhoto[];   // vide : état « Photo à venir »
+};
+```
+
+| # | Coach | Style de cours | Photos |
+|---|---|---|---|
+| 01 | Laurent Vantheemst | Boxe académique | 1 |
+| 02 | Paul Marius | Esprit club | 1 |
+| 03 | Manuel Tavares | Physique → Assaut | 1 |
+| 04 | Matthias Hourdé | Technique → Assauts à thème | 1 |
+| 05 | Jérôme Loubet | Condition physique | aucune — « Photo à venir » |
+| 06 | Jean-Paul Guinvanna | Boxe complète | 1 (en situation, `jp1`) |
+
+- Qualifications et titres : ceux déjà enregistrés, sans ajout.
+- Styles et descriptions : formulations fournies par le client ; ce ne sont pas des slogans officiels.
+- Titre et introduction de la page : formulations éditoriales, non officielles.
+- **Christophe Tiozzo** n'est plus présent dans la salle : `status: 'former'`. Sa fiche est conservée pour une éventuelle section historique ; il n'apparaît ni sur `/coachs` ni au planning.
+
+### Planning mis à jour
+Mercredi 18h — 20h : encadré par Manuel Tavares seul (Christophe Tiozzo retiré). Le reste du planning est inchangé.
+
+## Cours (Sprint 7)
+Fichier : `src/data/courses.ts` (`COURSES_PAGE`), types `CourseApproach`, `CourseProfile`, `CoursesPageContent`.
+
+Tous les textes viennent du brief du client. Ce sont des formulations éditoriales : ni slogans officiels, ni programme officiel, ni niveaux ou catégories d'inscription. Rien n'est ajouté : pas d'horaires, de tarifs, de règles d'accès, de nombre de rounds ni de matériel.
+
+| # | Approche | Phrase | Coachs associés |
+|---|---|---|---|
+| 01 | Technique | Les fondamentaux avant tout. | Laurent Vantheemst, Matthias Hourdé, Paul Marius |
+| 02 | Préparation physique | Construire le moteur. | Manuel Tavares, Jérôme Loubet, Jean-Paul Guinvanna |
+| 03 | Assauts | Mettre la technique à l'épreuve. | Manuel Tavares, Jean-Paul Guinvanna |
+| 04 | Assauts à thème | Travailler avec un objectif précis. | Matthias Hourdé |
+| 05 | Cardio & condition physique | Tenir le rythme. | Jérôme Loubet |
+| 06 | Boxe complète | Tout mettre ensemble. | Jean-Paul Guinvanna |
+
+Points à valider par le club :
+- « Les assauts ne concernent pas tous les pratiquants. » : seule phrase rédigée par l'agent, pour traduire la consigne « ne pas présenter les assauts comme obligatoires ».
+- Association question / profil : « Tu commences ? » Débuter ; « Tu veux progresser ? » Progresser ; « Tu reprends ? » S'entraîner ; « Tu veux boxer ? » Se confronter.
+- Sur-titre de l'introduction (« Les séances ») et titres de section (« Ce qu'on travaille », « Trouver son rythme ») : intitulés fonctionnels ajoutés pour structurer la page.
+
+## Page Planning (Sprint 9)
+Fichier : `src/data/planning.ts` (`PLANNING_PAGE`), types `PlanningPageContent`, `ScheduleMarker`. Aucun horaire n'y est recopié.
+
+Textes fournis par le client, éditoriaux et non officiels : « À vous de choisir votre rythme. », « Quel rythme vous correspond ? », « Chaque séance a son approche. », « Découvrez les coachs et leurs méthodes. », « Votre créneau est là. », « Il ne reste plus qu'à pousser la porte. »
+
+| Repère | Rattachement | Séances |
+|---|---|---|
+| Technique | mention « Technique » | mardi 18h, jeudi 18h, vendredi 18h, dimanche 10h |
+| Cardio | mention « Cardio » | mardi 18h, jeudi 18h, vendredi 18h |
+| Préparation physique | mention « Préparation physique » | mercredi 18h |
+| Assaut | mentions « Sparing » ou « Passage de gants » | mercredi 18h, jeudi 18h, dimanche 10h, dimanche 12h |
+| Jeunes | séances avec une tranche d'âge | mercredi 15h30 (6/11 ans), mercredi 16h30 (12/16 ans) |
+
+**À valider par le club :** le planning ne porte pas la mention « Assaut ». Le repère regroupe les séances « Sparing » et « Passage de gants », et l'affiche explicitement.
+
+Ajouts de l'agent : la phrase « Quelques repères pour lire le planning, d'après les mentions de chaque séance. », le sur-titre « Choisir sa séance » (repris du brief), le sur-titre « Les coachs », et le titre masqué « Les entraînements de la semaine ».

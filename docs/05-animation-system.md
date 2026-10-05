@@ -174,3 +174,48 @@ Trois reveals au scroll, chacun joué une seule fois quand son bloc atteint 85 %
 | Clôture | Phrase, puis lien | fondu + 24px, 0,9s |
 
 Ni scroll-jacking, ni épinglage, ni parallax, ni animation permanente. Reduced motion : fondus de 0,3s, aucun déplacement. Tout le contenu est dans la page sans l'animation.
+
+## Entraînements / Planning (Sprint 5)
+Reveal au scroll, joué une fois : d'abord le titre, puis chaque jour à son entrée dans l'écran.
+
+| Bloc | Élément | Animation |
+|---|---|---|
+| Introduction | Lignes du titre | montée derrière un masque, 0,9s |
+| | Sur-titre, repère chiffré | fondu + 12px, 0,6s |
+| Chaque jour | Filet | se trace de gauche à droite, 0,9s |
+| | Nom du jour | monte derrière un masque, 0,6s |
+| | Créneaux | fondu + 12px, 0,6s, en cascade |
+| Lien | | fondu + 12px, 0,6s |
+
+Ni scroll-jacking, ni épinglage, ni parallax. Reduced motion : fondus de 0,3s, aucun déplacement, pas de glissement au survol.
+
+## Règles ajoutées au Sprint 5
+- **Pas de `once: true` sur un ScrollTrigger.** Utiliser `revealTrigger(element)` (`src/lib/gsap.ts`). `once: true` détruit le déclencheur dès qu'il a servi, y compris pendant que ScrollTrigger recalcule les autres : quand la page s'ouvre déjà défilée (précédent, rechargement), elle plantait. Corrigé pour toutes les sections.
+- **Ne pas animer avec GSAP un élément qui porte aussi un déplacement CSS au survol.** GSAP neutralise `translate` sur l'élément qu'il anime : mettre le survol sur un bloc intérieur.
+
+## Page Coachs (Sprint 6)
+Chaque profil se révèle une fois, à son entrée dans l'écran :
+
+| Départ | Élément | Animation |
+|---|---|---|
+| 0s | Photo(s) | rideau vertical (clip-path), 1,2s |
+| 0,2s | Trait rouge | se trace, 0,9s |
+| 0,3s | Nom | lignes qui montent derrière un masque, 0,9s |
+| 0,5s | Numéro, qualifications, style, description | fondu + 12px, 0,6s, en cascade |
+
+Puis un déplacement photographique très léger au scroll (`ParallaxImage`, amplitude 3 %). Ni rotation, ni rebond, ni animation permanente. Reduced motion : simples fondus, image fixe.
+
+Correctif commun : `useParallax` prend désormais pour repère le cadre de l'image, et non son parent direct (un `<picture>` sans boîte quand l'image a plusieurs formats).
+
+## Page Cours (Sprint 7)
+Un seul comportement, porté par le hook `useRowReveal` : à l'entrée d'un bloc dans l'écran, une fois, le filet se trace (`data-row-rule`), les lignes de titre montent derrière leur masque (`data-row-line`), puis le texte arrive en fondu avec 12px de translation (`data-row-fade`). L'ouverture joue la même séquence au chargement.
+
+Scroll naturel : ni scroll-jacking, ni défilement horizontal, ni épinglage, ni parallax, ni animation permanente. Reduced motion : simples fondus.
+
+Règle ajoutée : un élément qui contient un lien ne doit pas être révélé avec `autoAlpha` (qui le rend invisible au clavier tant qu'il n'est pas apparu) mais avec `opacity`. `useRowReveal` applique cette règle ; `useScrollReveal` reste réservé aux blocs sans lien.
+
+## Page Planning (Sprint 9)
+- Ouverture, repères et blocs d'appel : `useRowReveal` (filet, titre, texte).
+- Feuille : le reveal jour par jour vit désormais dans `ScheduleSheet`, commun à l'accueil et à la page (filet, nom du jour, puis numéro et séances).
+- Survol d'une séance inchangé : horaire en rouge, trait rouge, glissement de 4px.
+- Reduced motion : simples fondus, aucune translation.

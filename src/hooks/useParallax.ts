@@ -10,7 +10,7 @@ type ParallaxOptions = {
 
 /**
  * Parallax vertical léger, lié au scroll (scrub), sur l'élément référencé.
- * Le parent direct sert de fenêtre : il doit être en `overflow: hidden`.
+ * Le cadre (`div`) qui contient l'image sert de fenêtre : il doit être en `overflow: hidden`.
  * Reduced motion : aucun mouvement.
  */
 export function useParallax<T extends HTMLElement = HTMLDivElement>({
@@ -35,7 +35,8 @@ export function useParallax<T extends HTMLElement = HTMLDivElement>({
           scale,
           ease: EASE.none,
           scrollTrigger: {
-            trigger: element.parentElement ?? element,
+            // Le cadre de l'image : son parent direct peut être un <picture> sans boîte.
+            trigger: element.closest('div') ?? element,
             start: 'top bottom',
             end: 'bottom top',
             scrub: true,
