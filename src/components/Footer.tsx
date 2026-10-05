@@ -1,7 +1,7 @@
 import { Link } from 'react-router'
 import { Logo } from '@/components/Logo'
 import { CONTACT, CONTACT_CITY_LINE, EMAIL_HREF, PHONE_HREF } from '@/data/contact'
-import { CTA_NAV, MAIN_NAV, ROUTES, SECONDARY_NAV } from '@/data/navigation'
+import { CTA_NAV, LEGAL_NAV, MAIN_NAV, ROUTES, SECONDARY_NAV } from '@/data/navigation'
 import { SITE } from '@/data/site'
 
 const FOOTER_NAV = [...MAIN_NAV, CTA_NAV, ...SECONDARY_NAV]
@@ -67,9 +67,25 @@ export function Footer() {
       </div>
 
       <div className="border-t border-border">
-        <p className="container-site label py-6 text-muted-foreground">
-          © {CURRENT_YEAR} {SITE.name} — {SITE.location}
-        </p>
+        <div className="container-site flex flex-col gap-x-8 gap-y-2 py-6 md:flex-row md:items-center md:justify-between">
+          <p className="label text-muted-foreground">
+            © {CURRENT_YEAR} {SITE.name} — {SITE.location}
+          </p>
+          <nav aria-label="Informations légales">
+            <ul className="flex flex-col gap-x-8 md:flex-row">
+              {LEGAL_NAV.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    to={item.href}
+                    className="label inline-flex min-h-11 items-center text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
       </div>
     </footer>
   )

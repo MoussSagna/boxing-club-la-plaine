@@ -687,3 +687,34 @@ Chaque décision doit contenir :
 ### Mention « Aucun avis »
 **Décision :** non affichée ; aucun avis ni note sur le site ou dans les données structurées.
 **Statut :** appliqué.
+
+---
+
+## 2026-10-05 — Sprint Mentions légales : décisions
+
+### Hébergeur marqué « À confirmer »
+**Décision :** « Wix » est affiché, suivi de [À confirmer] ; ses coordonnées sont [À confirmer].
+**Raison :** Wix est l'hébergeur du site actuel du club. Le nouveau site n'est pas un site Wix : son hébergeur réel devra figurer ici, avec sa raison sociale, son adresse et son téléphone.
+**Impact :** à régler avant la mise en ligne.
+**Statut :** en attente.
+
+### Politique de confidentialité limitée aux traitements réels
+**Décision :** le texte décrit l'absence de collecte par le site, l'usage des e-mails envoyés au club, le stockage de la position de défilement, les liens sortants et les droits des personnes.
+**Raison :** consigne du client ; état vérifié (aucun cookie, aucune requête tierce).
+**Impact :** les durées de conservation ne sont pas indiquées (non fournies).
+**Statut :** à faire relire par le club.
+
+### Pas de page Cookies ni de bandeau
+**Décision :** une rubrique « Cookies » dans la politique de confidentialité indique qu'aucun cookie n'est déposé.
+**Raison :** aucun cookie ni traceur ; la mémorisation de la position de défilement est purement technique.
+**Statut :** appliqué.
+
+### Adresse issue de la source unique
+**Décision :** l'adresse affichée est celle de `contact.ts` (« 13 Rue du Général Guillaumat »), et non la graphie « 13, rue du Général Guillaumat » du brief juridique.
+**Raison :** une seule source pour tout le site.
+**Statut :** à valider.
+
+### Indexation
+**Décision :** pages juridiques indexables et présentes dans le sitemap.
+**Raison :** cohérence avec le système existant, où seules la 404 et `/design-system` sont en `noindex`.
+**Statut :** appliqué.

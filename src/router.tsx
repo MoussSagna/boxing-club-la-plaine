@@ -8,8 +8,10 @@ import { ContactPage } from '@/pages/ContactPage'
 import { CoursPage } from '@/pages/CoursPage'
 import { HomePage } from '@/pages/HomePage'
 import { InscriptionPage } from '@/pages/InscriptionPage'
+import { MentionsLegalesPage } from '@/pages/MentionsLegalesPage'
 import { NotFoundPage } from '@/pages/NotFoundPage'
 import { PlanningPage } from '@/pages/PlanningPage'
+import { PolitiqueConfidentialitePage } from '@/pages/PolitiqueConfidentialitePage'
 
 export const router = createBrowserRouter([
   {
@@ -25,6 +27,8 @@ export const router = createBrowserRouter([
       { path: ROUTES.actualites, Component: ActualitesPage },
       { path: ROUTES.inscription, Component: InscriptionPage },
       { path: ROUTES.contact, Component: ContactPage },
+      { path: ROUTES.mentionsLegales, Component: MentionsLegalesPage },
+      { path: ROUTES.confidentialite, Component: PolitiqueConfidentialitePage },
       {
         // Page interne de référence du design system : chargée à la demande, non indexée.
         path: ROUTES.designSystem,

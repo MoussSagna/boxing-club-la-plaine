@@ -37,3 +37,6 @@ SEO et performance doivent être traités ensemble :
 - lazy loading
 - fonts maîtrisées
 - JS limité
+
+## Pages juridiques
+Title « Mentions légales — Boxing Club de la Plaine » et « Politique de confidentialité — Boxing Club de la Plaine », description factuelle, URL canonique. Elles sont indexables et figurent dans le sitemap, comme les autres pages publiques ; `robots.txt` n'est pas modifié.

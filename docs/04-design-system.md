@@ -409,3 +409,14 @@ Source unique : `src/data/contact.ts`.
 - **Page Inscription**, clôture « Une question ? » : téléphone et e-mail en grand.
 - Carte : aucun composant embarqué ; un lien externe ouvre l'adresse dans un service de cartographie.
 - Menu mobile : inchangé (lien Contact et « Paris 15 »).
+
+---
+
+# Pages juridiques (sprint Mentions légales)
+`/mentions-legales` et `/politique-de-confidentialite`, sur un gabarit commun (`LegalPage`) : en-tête sobre sur fond noir (sur-titre, H1 en `text-display-l`), puis le texte sur fond crème.
+
+- Chaque section : un filet plein, le titre en Anton à gauche (colonnes 1 à 4), le contenu à droite en colonne de lecture (environ 67 caractères par ligne, 38 en mobile).
+- Informations en lignes « intitulé : valeur », séparées par des filets ; pas de carte.
+- Une information non fournie est affichée **[À confirmer]** (label rouge sur crème) — jamais remplacée par une valeur supposée.
+- Une seule animation, à l'ouverture. Le contenu est statique.
+- Pied de page : deux liens dans la barre du bas, à droite du copyright (empilés en mobile).

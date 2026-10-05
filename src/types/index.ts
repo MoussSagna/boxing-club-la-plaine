@@ -313,3 +313,29 @@ export type RegistrationDocument = {
 
 /** Fragment de texte ; `strong` le met en évidence typographiquement. */
 export type TextPart = { text: string; strong?: boolean }
+
+/** Une ligne « intitulé : valeur » d'une page juridique. */
+export type LegalRow = {
+  label: string
+  /** Valeur sur une ou plusieurs lignes. Absente : l'information reste à confirmer. */
+  value?: string | string[]
+  href?: string
+  /** Information non fournie ou non vérifiée : affichée avec la mention « À confirmer ». */
+  toConfirm?: boolean
+}
+
+export type LegalSection = {
+  id: string
+  title: string
+  paragraphs?: string[]
+  rows?: LegalRow[]
+  items?: string[]
+  /** Lien de fin de section. */
+  link?: NavItem
+}
+
+export type LegalPageContent = {
+  eyebrow: string
+  title: { lines: string[]; accent: string }
+  sections: LegalSection[]
+}

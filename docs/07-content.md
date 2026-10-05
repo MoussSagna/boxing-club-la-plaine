@@ -313,3 +313,28 @@ Fichier : `src/data/contact.ts` (`CONTACT`, `PHONE_HREF`, `EMAIL_HREF`, `MAP_HRE
 | E-mail | bclaplaine@gmail.com |
 
 Ces valeurs sont aussi écrites en dur dans les données structurées de `index.html` (adresse, téléphone, e-mail) : à modifier aux deux endroits. Non renseignés, faute d'information : coordonnées GPS, horaires d'ouverture, avis, note.
+
+## Pages juridiques (sprint Mentions légales)
+Fichier : `src/data/legal.ts` (`PUBLISHER`, `LEGAL_NOTICE`, `PRIVACY_POLICY`). Adresse, téléphone et e-mail viennent de `contact.ts`.
+
+Informations officielles fournies par le club : dénomination BOXING CLUB DE LA PLAINE ; association loi de 1901 ; présidente Géraldine Filloux ; éditeur de la publication Boxing Club De La Plaine ; hébergeur indiqué dans les mentions du site actuel : Wix.
+
+### Ce que le site fait réellement (vérifié dans le code et le navigateur, toutes pages)
+| Point | État |
+|---|---|
+| Cookies | aucun |
+| Stockage local | aucun en `localStorage` ; position de défilement en mémoire de session |
+| Requêtes vers des tiers | aucune (polices et images servies par le site) |
+| Formulaire, compte, mesure d'audience, publicité | aucun |
+| Carte ou contenu embarqué | aucun |
+| Liens sortants | espace licence FFB, Google Maps, RIB sur le site actuel du club |
+
+La politique de confidentialité décrit uniquement cela. **Si une fonctionnalité change (formulaire, statistiques, carte embarquée), le texte doit être mis à jour en même temps.** Aucune page Cookies n'est créée : elle n'a pas d'objet tant qu'aucun cookie n'est déposé.
+
+### Informations manquantes (affichées « À confirmer » ou absentes)
+- Hébergeur du **nouveau** site et ses coordonnées (raison sociale, adresse, téléphone). « Wix » est l'hébergeur du site actuel ; ce site-ci, construit hors Wix, sera vraisemblablement hébergé ailleurs.
+- Données techniques de connexion conservées par l'hébergeur.
+- Durée de conservation des messages et des dossiers reçus par e-mail.
+- Directeur ou directrice de la publication (seul « éditeur de la publication » a été fourni).
+- Numéro RNA, SIRET le cas échéant.
+- Délégué à la protection des données : non mentionné, faute d'information.

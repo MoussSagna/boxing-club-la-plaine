@@ -127,3 +127,9 @@ Sprint 1 : contrôle automatisé du contraste de tous les textes rendus sur `/`,
 - Téléphone et e-mail sont des liens natifs (`tel:`, `mailto:`), atteignables au clavier avec focus visible ; 44px de haut en mobile dans le pied de page.
 - Dans le pied de page, chaque lien est précédé de « Téléphone : » ou « E-mail : » pour les lecteurs d'écran.
 - Page Contact : liste de définitions (intitulé, valeur) ; le lien de carte est annoncé comme ouvrant une nouvelle fenêtre.
+
+## Pages juridiques (sprint Mentions légales)
+- Un `h1`, une `section` par rubrique nommée par son `h2`, informations en listes de définitions.
+- Texte de 16 à 20px, lignes d'environ 67 caractères au plus, interligne 1,55.
+- Contraste contrôlé sur tous les textes des deux pages : aucun échec.
+- Liens du pied de page : 44px de haut, atteignables au clavier, dans une navigation nommée « Informations légales ».

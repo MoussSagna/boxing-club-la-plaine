@@ -9,6 +9,8 @@ export const ROUTES = {
   actualites: '/actualites',
   inscription: '/inscription',
   contact: '/contact',
+  mentionsLegales: '/mentions-legales',
+  confidentialite: '/politique-de-confidentialite',
   /** Page interne (développement), absente de la navigation et du sitemap. */
   designSystem: '/design-system',
 } as const
@@ -27,3 +29,9 @@ export const MAIN_NAV: NavItem[] = [
 export const SECONDARY_NAV: NavItem[] = [{ label: 'Contact', href: ROUTES.contact }]
 
 export const CTA_NAV: NavItem = { label: 'Inscription', href: ROUTES.inscription }
+
+/** Pages juridiques (bas du pied de page). */
+export const LEGAL_NAV: NavItem[] = [
+  { label: 'Mentions légales', href: ROUTES.mentionsLegales },
+  { label: 'Politique de confidentialité', href: ROUTES.confidentialite },
+]
