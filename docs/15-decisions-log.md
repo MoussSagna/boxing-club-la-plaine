@@ -718,3 +718,43 @@ Chaque décision doit contenir :
 **Décision :** pages juridiques indexables et présentes dans le sitemap.
 **Raison :** cohérence avec le système existant, où seules la 404 et `/design-system` sont en `noindex`.
 **Statut :** appliqué.
+
+
+---
+
+## 2026-11-09 — Page Club : décisions
+
+### Page développée sans attendre les témoignages
+**Décision :** `/club` est construite ; la section témoignages existe dans le code mais ne s'affiche pas tant que `CLUB_PAGE.testimonials.items` est vide.
+**Raison :** brief du client (« prévoir l'architecture », « pas de section vide ni de placeholder »).
+**Statut :** appliqué.
+
+### Photographies de la salle
+**Décision :** les trois photographies du dossier « la salle » sont utilisées ; originaux copiés dans `sources/la-salle/` (ignoré par Git), fichiers servis dans `public/assets/images/club/` (AVIF + JPEG, 720 et 1086px ; 6,6 Mo → environ 300 Ko en AVIF).
+**Raison :** le dossier se trouvait dans `dist/assets/`, vidé à chaque build ; il est mis à l'abri avant le premier build.
+**Impact :** aucune photo n'est associée à une date passée. Les deux détails recadrés (coin du ring, sac) ont été retirés à la demande du client ; la séquence garde deux photos : « Les rings » (la salle en compte deux) et « Les sacs de frappe ».
+**Statut :** à valider.
+
+### Photographie « photo de boxe/11.JPG » non utilisée
+**Décision :** non utilisée ; copiée dans `sources/photo-de-boxe/`.
+**Raison :** hors du dossier « la salle » ; personnes identifiables (dont un mineur), filigrane d'un photographe, salle différente.
+**Statut :** à décider par le client (droits, autorisations).
+
+### Hero en deux colonnes
+**Décision :** texte à gauche, photographie verticale à droite jusqu'au bord de l'écran (desktop) ; photo en bandeau puis texte (mobile).
+**Raison :** les photographies sont verticales (3:4) et font 1086px de large : en plein écran horizontal, elles seraient recadrées à l'excès et agrandies.
+**Statut :** appliqué.
+
+### Histoire : textes officiels, sans photographie
+**Décision :** chaque date officielle reçoit le paragraphe officiel correspondant (1991, 2000, 2019). Aucune image dans cette section.
+**Raison :** ne pas présenter les photos actuelles comme des archives.
+**Statut :** appliqué.
+
+### Renvois avec des textes déjà validés
+**Décision :** le bloc Coachs reprend le titre et la phrase de `/coachs`, le bloc Cours ceux de `/cours`, la clôture la phrase « Il ne reste plus qu'à pousser la porte. » de `/planning`.
+**Raison :** ne rien inventer.
+**Statut :** appliqué.
+
+### Intitulés ajoutés, à valider
+« Trois dates, une salle. » (histoire), « Les rings. Les sacs. Le sol rouge. » (la salle), « Nous trouver » (lien secondaire de la clôture), « Les membres / Ils racontent le club. » (témoignages, non affichés).
+**Statut :** à valider.

@@ -338,3 +338,17 @@ La politique de confidentialité décrit uniquement cela. **Si une fonctionnalit
 - Directeur ou directrice de la publication (seul « éditeur de la publication » a été fourni).
 - Numéro RNA, SIRET le cas échéant.
 - Délégué à la protection des données : non mentionné, faute d'information.
+
+
+## Page Club (2026-11-09)
+Fichier : `src/data/club.ts` (`CLUB_PAGE`), types `ClubPageContent`, `ClubPhoto`, `ClubFrame`, `ClubChapter`, `Testimonial`.
+
+- Histoire et phrase sur le club familial : importées de `src/data/history.ts` (officiel), jamais recopiées.
+- Les paragraphes officiels sont associés aux dates dans l'ordre (1991, 2000, 2019).
+- Renvois : textes validés de `/coachs`, `/cours`, `/planning`.
+
+### Témoignages
+```ts
+type Testimonial = { id: string; quote: string; author: string; detail?: string }
+```
+Ajouter des témoignages réels dans `CLUB_PAGE.testimonials.items` suffit à afficher la section (entre l'esprit du club et les renvois). Liste vide : rien n'est affiché.

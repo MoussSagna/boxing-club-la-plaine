@@ -334,6 +334,93 @@ export type LegalSection = {
   link?: NavItem
 }
 
+/** Photographie réelle du club, servie en AVIF + JPEG. */
+export type ClubPhoto = {
+  /** Image de repli (JPEG). */
+  src: string
+  srcSet?: string
+  /** Formats modernes (AVIF). */
+  sources?: { type: string; srcSet: string }[]
+  width: number
+  height: number
+  alt: string
+  /** Point d'intérêt de l'image, en % : il reste dans le cadre au recadrage. */
+  focalPoint?: { x: number; y: number }
+}
+
+/** Une image de la séquence « La salle ». */
+export type ClubFrame = {
+  id: string
+  /** Légende courte : ce que montre la photographie. */
+  caption: string
+  photo: ClubPhoto
+}
+
+/** Un chapitre de l'histoire : une date officielle et le texte officiel qui la raconte. */
+export type ClubChapter = {
+  event: HistoryEvent
+  text: string
+}
+
+/**
+ * Témoignage d'un membre. Uniquement des propos réels, recueillis auprès des membres
+ * et validés par le club : jamais de texte inventé ni d'avis fabriqué.
+ */
+export type Testimonial = {
+  id: string
+  quote: string
+  /** Nom ou prénom, tel que le membre accepte qu'il soit publié. */
+  author: string
+  /** Précision facultative, ex. « Membre depuis 2015 », « Boxe loisir ». */
+  detail?: string
+}
+
+export type ClubPageContent = {
+  hero: {
+    eyebrow: string
+    title: { lines: string[]; accent: string }
+    /** Date de création (AAAA-MM-JJ). */
+    founded: string
+    /** Libellé de la date, ex. « Création du club ». */
+    foundedLabel: string
+    photo: ClubPhoto
+  }
+  story: {
+    eyebrow: string
+    title: { lines: string[]; accent: string }
+    chapters: ClubChapter[]
+  }
+  space: {
+    eyebrow: string
+    title: { lines: string[]; accent: string }
+    /** Photographies, dans l'ordre de la séquence. */
+    frames: ClubFrame[]
+  }
+  spirit: {
+    eyebrow: string
+    /** Composition typographique : ligne, mots de liaison en petit, ligne accentuée. */
+    title: { lead: string; connector: string; accent: string }
+    philosophy: ClubHistoryContent['philosophy']
+  }
+  testimonials: {
+    eyebrow: string
+    title: string
+    items: Testimonial[]
+  }
+  next: {
+    eyebrow: string
+    title: { lines: string[]; accent: string }
+    text: string
+    links: NavItem[]
+  }[]
+  outro: {
+    title: { lines: string[]; accent: string }
+    text: string
+    primaryCta: NavItem
+    secondaryCta: NavItem
+  }
+}
+
 export type LegalPageContent = {
   eyebrow: string
   title: { lines: string[]; accent: string }

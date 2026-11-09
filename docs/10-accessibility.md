@@ -133,3 +133,11 @@ Sprint 1 : contrôle automatisé du contraste de tous les textes rendus sur `/`,
 - Texte de 16 à 20px, lignes d'environ 67 caractères au plus, interligne 1,55.
 - Contraste contrôlé sur tous les textes des deux pages : aucun échec.
 - Liens du pied de page : 44px de haut, atteignables au clavier, dans une navigation nommée « Informations légales ».
+
+
+## Page Club (2026-11-09)
+- Un `h1`, un `h2` par section, les trois événements en `h3` dans une liste ordonnée « Dates clés du club » ; dates en `time`.
+- Photographies en `figure` / `figcaption`, avec un texte alternatif descriptif ; numéros décoratifs masqués.
+- Titre « Les débutants avec les compétiteurs. » lu d'une traite.
+- Clavier : ordre logique, focus visible, cibles de 44px minimum. Liens révélés par `opacity` (jamais invisibles au clavier).
+- Reduced motion : tout le contenu visible, images fixes.

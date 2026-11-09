@@ -103,3 +103,9 @@ Sprint 1 : aucun débordement horizontal et aucun élément hors cadre sur `/`, 
 - À partir de 768px : numéro à gauche, contenu à droite ; documents et tarifs sur deux colonnes.
 - Vérifié à 375×667, 390×844, 430×932, 768×1024, 1024×768, 1280×800, 1440×900, 1920×1080 : aucun débordement, aucun texte coupé, cibles de 44px minimum.
 - Contrôle de chevauchement : aucune alerte.
+
+
+## Page Club (2026-11-09)
+- Ouverture : photo en bandeau (46 % de la hauteur d'écran en mobile, 52 % en tablet), puis le texte ; à partir de 1024px, texte à gauche et photo à droite jusqu'au bord de l'écran.
+- La salle : deux photos l'une sous l'autre (mobile, tablet), 7 + 5 colonnes décalées (desktop).
+- Vérifié à 375, 390, 430, 768, 1024, 1280, 1440, 1920 : aucun débordement horizontal, aucun texte coupé. Date de l'ouverture visible sans défiler à 375×667, 390×844, 430×932, 768×1024, 1024×768, 1280×720, 1280×800, 1440×900, 1920×1080.

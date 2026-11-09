@@ -222,3 +222,10 @@ Règle ajoutée : un élément qui contient un lien ne doit pas être révélé 
 
 ## Page Inscription (Sprint 10)
 `useRowReveal` partout : ouverture au chargement, puis chaque bloc et chaque étape à son entrée dans l'écran (filet, titre, puis numéro, texte, tarifs et bouton en cascade). Aucune animation permanente ; reduced motion : simples fondus.
+
+
+## Page Club (2026-11-09)
+- Ouverture, histoire, esprit, renvois, clôture : `useRowReveal` (filets gris et amorces rouges qui se tracent, lignes de titre masquées, texte en fondu). Chaque date se révèle à son entrée dans l'écran.
+- Photo d'ouverture : `ImageReveal` (rideau vertical + dézoom).
+- La salle : `ClubSpaceFrame` — rideau vertical sur l'image (1,2s), trait rouge de la légende, légende en fondu ; puis `ParallaxImage` (3 %).
+- Ni scroll-jacking, ni épinglage, ni animation permanente. Reduced motion : fondus de 0,3s, images fixes.

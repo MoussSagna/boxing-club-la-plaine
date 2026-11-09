@@ -222,9 +222,16 @@ Reste à faire : page `/planning`.
 ---
 
 ## Sprint 8 — Page Club
-Status: EN ATTENTE (décision du client)
+Status: COMPLETED (2026-11-09, brief « Sprint 11 — Implémentation de la page /club ») — en local, en attente de validation
 
-Mis en attente : des témoignages de membres seront récupérés pour enrichir la page. Ne pas développer `/club` avant.
+- [x] page `/club` : ouverture, histoire en trois dates, la salle en photographies, l'esprit du club, renvois coachs / cours / planning, clôture
+- [x] photographies réelles du dossier « la salle », optimisées (AVIF + JPEG)
+- [x] témoignages : architecture prête, rien d'affiché tant qu'aucun témoignage réel n'est fourni
+- [x] reveals GSAP, léger déplacement des images, reduced motion
+- [x] métadonnées de la page
+- [x] lint OK, build OK, console propre
+
+Reste à faire : témoignages des membres (à fournir par le club).
 
 ---
 

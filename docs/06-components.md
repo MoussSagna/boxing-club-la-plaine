@@ -197,3 +197,11 @@ Données : `src/data/planning.ts` (textes de la page uniquement). Les horaires r
 Dossier `src/sections/registration/` : `RegistrationHero`, `RegistrationTrial`, `RegistrationSteps`, `RegistrationStep`, `RegistrationChecklist`, `RegistrationContact`, et `shared.tsx` (`RichText`, `BigEmail`, `WRAPPING_BUTTON`).
 
 Données : `src/data/registration.ts`. Fichiers : `public/assets/documents/`. Réutilisés : `Section`, `SectionEyebrow`, `SectionTitle`, `Button`, `AppLink`, `MaskedLine`, `useRowReveal`. Aucune dépendance.
+
+
+## Page Club (2026-11-09)
+Dossier `src/sections/club/` : `ClubHero`, `ClubStory`, `ClubSpace`, `ClubSpaceFrame`, `ClubSpirit`, `ClubTestimonials`, `ClubNext`. La clôture réutilise `PlanningCallout`.
+
+Réutilisés : `Section`, `SectionEyebrow`, `SectionTitle`, `Accent`, `Button`, `AppLink`, `ImageReveal`, `ParallaxImage`, `MaskedLine`, `HistoryPhilosophy`, `useRowReveal`. Aucune dépendance ajoutée.
+
+`formatEventDate` (ex-`formatWhen` de `TimelineItem`) passe dans `src/lib/history.ts`, partagé par l'accueil et la page.

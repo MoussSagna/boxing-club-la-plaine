@@ -420,3 +420,20 @@ Source unique : `src/data/contact.ts`.
 - Une information non fournie est affichée **[À confirmer]** (label rouge sur crème) — jamais remplacée par une valeur supposée.
 - Une seule animation, à l'ouverture. Le contenu est statique.
 - Pied de page : deux liens dans la barre du bas, à droite du copyright (empilés en mobile).
+
+
+---
+
+# Page Club (2026-11-09)
+| # | Section | Fond | Contenu |
+|---|---|---|---|
+| 1 | Ouverture | noir | sur-titre « Boxing Club de la Plaine — Paris 15 », H1 « Une salle. / Une histoire. », filet rouge, « Création du club — 13 mai 1991 », photographie de la salle |
+| 2 | Histoire | crème | « Trois dates, une salle. » : 1991, 2000, 2019, l'année en très grand, l'événement et le texte officiel à droite |
+| 3 | La salle | noir | « Les rings. Les sacs. Le sol rouge. » : deux grandes vues décalées, « 01 — Les rings » (7 colonnes) et « 02 — Les sacs de frappe » (5 colonnes, plus bas) |
+| 4 | L'esprit | crème | « LES DÉBUTANTS / ᴬᵛᴱᶜ ᴸᴱˢ COMPÉTITEURS. », puis la phrase officielle décalée à droite |
+| 5 | Témoignages | noir | affichée seulement s'il y a des témoignages |
+| 6 | La suite | noir | deux blocs : Coachs, Cours (liens cours et planning) |
+| 7 | Clôture | crème | « Entrez dans / la salle. », Inscription, Nous trouver |
+
+- Photographies sans filtre (couleur) : le ring bleu, les cordes et le sol rouge font partie du lieu. Pas de grain supplémentaire.
+- Ouverture : titre borné par la largeur et la hauteur ; la date est visible sans défiler de 375×667 à 1920×1080.
